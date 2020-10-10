@@ -8,5 +8,7 @@ public class Main {
         Rectangle rectangle1 = new Rectangle();
         rectangle.draw();
 
+        Rectangle banan = new Rectangle();
+
         }
 }
