@@ -1,4 +1,4 @@
-package org.academiadecodigo.simplegraphics.graphics;
+package simplegraphics.src.org.academiadecodigo.simplegraphics.graphics;
 
 import java.awt.*;
 

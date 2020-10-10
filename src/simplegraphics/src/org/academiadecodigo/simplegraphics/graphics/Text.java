@@ -1,10 +1,13 @@
-package org.academiadecodigo.simplegraphics.graphics;
+package simplegraphics.src.org.academiadecodigo.simplegraphics.graphics;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Shape;
 
 public class Text implements Shape, Colorable, Movable {
-    private Color color = Color.BLACK;
+    private java.awt.Color color = java.awt.Color.BLACK;
     private JLabel label = new JLabel();
     private double x;
 
@@ -72,7 +75,7 @@ public class Text implements Shape, Colorable, Movable {
     public void translate(double dx, double dy) {
         x += dx;
         y += dy;
-        Canvas.getInstance().repaint();
+        java.awt.Canvas.getInstance().repaint();
     }
 
     /**
@@ -84,7 +87,7 @@ public class Text implements Shape, Colorable, Movable {
     public void grow(double dw, double dh) {
         xGrow += dw;
         yGrow += dh;
-        Canvas.getInstance().repaint();
+        java.awt.Canvas.getInstance().repaint();
     }
 
     /**
@@ -92,9 +95,9 @@ public class Text implements Shape, Colorable, Movable {
      *
      * @param newColor the new color
      */
-    public void setColor(Color newColor) {
+    public void setColor(java.awt.Color newColor) {
         color = newColor;
-        Canvas.getInstance().repaint();
+        java.awt.Canvas.getInstance().repaint();
     }
 
     /**
@@ -103,14 +106,14 @@ public class Text implements Shape, Colorable, Movable {
      */
     public void setText(String message) {
         label.setText(message);
-        Canvas.getInstance().repaint();
+        java.awt.Canvas.getInstance().repaint();
     }
 
     /**
      * Shows this text on the canvas.
      */
     public void draw() {
-        Canvas.getInstance().show(this);
+        java.awt.Canvas.getInstance().show(this);
     }
 
     /**

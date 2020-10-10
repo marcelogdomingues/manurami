@@ -1,10 +1,13 @@
-package org.academiadecodigo.simplegraphics.graphics;
+package simplegraphics.src.org.academiadecodigo.simplegraphics.graphics;
 
 import java.awt.*;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 
 public class Rectangle implements Shape, Colorable, Fillable, Movable {
-    private Color color = Color.BLACK;
+    private java.awt.Color color = java.awt.Color.BLACK;
     private boolean filled = false;
     private double x;
     private double y;
@@ -86,7 +89,7 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
     public void translate(double dx, double dy) {
         x += dx;
         y += dy;
-        Canvas.getInstance().repaint();
+        java.awt.Canvas.getInstance().repaint();
     }
 
     /**
@@ -101,7 +104,7 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
         height += 2 * dh;
         x -= dw;
         y -= dh;
-        Canvas.getInstance().repaint();
+        java.awt.Canvas.getInstance().repaint();
     }
 
     /**
@@ -110,7 +113,7 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
      * @return the rectangle color
      */
     @Override
-    public Color getColor() {
+    public java.awt.Color getColor() {
         return color;
     }
 
@@ -122,7 +125,7 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
     @Override
     public void setColor(Color newColor) {
         color = newColor;
-        Canvas.getInstance().repaint();
+        java.awt.Canvas.getInstance().repaint();
     }
 
     /**
@@ -131,7 +134,7 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
     @Override
     public void draw() {
         filled = false;
-        Canvas.getInstance().show(this);
+        java.awt.Canvas.getInstance().show(this);
     }
 
     /**
@@ -139,7 +142,7 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
      */
     @Override
     public void delete() {
-        Canvas.getInstance().hide(this);
+        java.awt.Canvas.getInstance().hide(this);
     }
 
     /**

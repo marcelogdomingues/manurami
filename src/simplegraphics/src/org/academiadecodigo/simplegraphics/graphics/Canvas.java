@@ -1,8 +1,9 @@
-package org.academiadecodigo.simplegraphics.graphics;
+package simplegraphics.src.org.academiadecodigo.simplegraphics.graphics;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Shape;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -20,7 +21,7 @@ public class Canvas {
     private static final int MARGIN = 10;
     private static final int LOCATION_OFFSET = 120;
     private static Canvas canvas = new Canvas();
-    private ArrayList<Shape> shapes = new ArrayList<Shape>();
+    private ArrayList<java.awt.Shape> shapes = new ArrayList<java.awt.Shape>();
     private BufferedImage background;
     private JFrame frame;
     private CanvasComponent component;
@@ -79,7 +80,7 @@ public class Canvas {
      * Method that returns all the shapes that displayed in the canvas
      * @return ArrayList with all the shapes
      */
-    public ArrayList<Shape> getShapes() {
+    public ArrayList<java.awt.Shape> getShapes() {
         return shapes;
     }
     /**
@@ -90,11 +91,11 @@ public class Canvas {
      * @param y2 - end of y
      * @return ArrayList with all the shapes in given area
      */
-    public ArrayList<Shape> getShapesInArea(int x1, int y1, int x2, int y2) {
+    public ArrayList<java.awt.Shape> getShapesInArea(int x1, int y1, int x2, int y2) {
 
-        ArrayList<Shape> shapesInArea = new ArrayList<>();
+        ArrayList<java.awt.Shape> shapesInArea = new ArrayList<>();
 
-        for (Shape shape: shapes) {
+        for (java.awt.Shape shape: shapes) {
             if (shape.getX() >= x1 && shape.getX() <= x2 &&
                     shape.getY() >= y1 && shape.getY() <= y2) {
                 shapesInArea.add(shape);
@@ -103,14 +104,14 @@ public class Canvas {
         return shapesInArea;
     }
 
-    public void show(Shape s) {
+    public void show(java.awt.Shape s) {
         if (!shapes.contains(s)) {
             shapes.add(s);
         }
         repaint();
     }
 
-    public void hide(Shape s) {
+    public void hide(java.awt.Shape s) {
         if (shapes.contains(s)) {
             shapes.remove(s);
         }
@@ -187,7 +188,7 @@ public class Canvas {
             if (background != null) {
                 g.drawImage(background, 0, 0, null);
             }
-            for (Shape s : new ArrayList<Shape>(shapes)) {
+            for (java.awt.Shape s : new ArrayList<java.awt.Shape>(shapes)) {
                 Graphics2D g2 = (Graphics2D) g.create();
                 s.paintShape(g2);
                 g2.dispose();

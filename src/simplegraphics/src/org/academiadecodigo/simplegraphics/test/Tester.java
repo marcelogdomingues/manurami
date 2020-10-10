@@ -1,15 +1,15 @@
-package org.academiadecodigo.simplegraphics.test;
+package simplegraphics.src.org.academiadecodigo.simplegraphics.test;
 
 import org.academiadecodigo.simplegraphics.graphics.*;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.simplegraphics.mouse.Mouse;
-import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
-import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
-import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
+import simplegraphics.src.org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import simplegraphics.src.org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import simplegraphics.src.org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import simplegraphics.src.org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import simplegraphics.src.org.academiadecodigo.simplegraphics.mouse.Mouse;
+import simplegraphics.src.org.academiadecodigo.simplegraphics.mouse.MouseEvent;
+import simplegraphics.src.org.academiadecodigo.simplegraphics.mouse.MouseEventType;
+import simplegraphics.src.org.academiadecodigo.simplegraphics.mouse.MouseHandler;
+import simplegraphics.src.org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Tester implements KeyboardHandler, MouseHandler {
 

@@ -1,4 +1,4 @@
-package org.academiadecodigo.simplegraphics.keyboard;
+package simplegraphics.src.org.academiadecodigo.simplegraphics.keyboard;
 
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 

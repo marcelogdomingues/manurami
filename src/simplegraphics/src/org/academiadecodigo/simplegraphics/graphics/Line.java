@@ -1,10 +1,13 @@
-package org.academiadecodigo.simplegraphics.graphics;
+package simplegraphics.src.org.academiadecodigo.simplegraphics.graphics;
 
 import java.awt.*;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Shape;
 import java.awt.geom.Line2D;
 
 public class Line implements Shape, Colorable, Movable {
-    private Color color = Color.BLACK;
+    private java.awt.Color color = java.awt.Color.BLACK;
     private double x1;
     private double y1;
     private double x2;
@@ -77,7 +80,7 @@ public class Line implements Shape, Colorable, Movable {
         y1 += dy;
         x2 += dx;
         y2 += dy;
-        Canvas.getInstance().repaint();
+        java.awt.Canvas.getInstance().repaint();
     }
 
     /**
@@ -103,7 +106,7 @@ public class Line implements Shape, Colorable, Movable {
             y2 -= dh;
         }
 
-        Canvas.getInstance().repaint();
+        java.awt.Canvas.getInstance().repaint();
     }
 
     /**
@@ -112,9 +115,9 @@ public class Line implements Shape, Colorable, Movable {
      * @param newColor the new color
      */
     @Override
-    public void setColor(Color newColor) {
+    public void setColor(java.awt.Color newColor) {
         color = newColor;
-        Canvas.getInstance().repaint();
+        java.awt.Canvas.getInstance().repaint();
     }
 
     /**
@@ -131,7 +134,7 @@ public class Line implements Shape, Colorable, Movable {
      */
     @Override
     public void draw() {
-        Canvas.getInstance().show(this);
+        java.awt.Canvas.getInstance().show(this);
     }
 
     /**

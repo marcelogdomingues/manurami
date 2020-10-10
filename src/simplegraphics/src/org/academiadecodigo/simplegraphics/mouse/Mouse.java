@@ -1,6 +1,6 @@
-package org.academiadecodigo.simplegraphics.mouse;
+package simplegraphics.src.org.academiadecodigo.simplegraphics.mouse;
 
-import org.academiadecodigo.simplegraphics.graphics.Canvas;
+import simplegraphics.src.org.academiadecodigo.simplegraphics.graphics.Canvas;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -48,7 +48,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
     }
 
     /**
-     * @see MouseHandler#mouseClicked(org.academiadecodigo.simplegraphics.mouse.MouseEvent)
+     * @see MouseHandler#mouseClicked(simplegraphics.src.org.academiadecodigo.simplegraphics.mouse.MouseEvent)
      * @param e the event
      */
     @Override
@@ -62,7 +62,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
         while (iterator.hasNext()) {
             MouseEventType et = iterator.next();
             if (et == MouseEventType.MOUSE_CLICKED) {
-                handler.mouseClicked(new org.academiadecodigo.simplegraphics.mouse.MouseEvent(e.getX(), e.getY(), MouseEventType.MOUSE_CLICKED));
+                handler.mouseClicked(new simplegraphics.src.org.academiadecodigo.simplegraphics.mouse.MouseEvent(e.getX(), e.getY(), MouseEventType.MOUSE_CLICKED));
             }
 
         }
@@ -70,7 +70,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
     }
 
     /**
-     * @see MouseHandler#mouseMoved(org.academiadecodigo.simplegraphics.mouse.MouseEvent)
+     * @see MouseHandler#mouseMoved(simplegraphics.src.org.academiadecodigo.simplegraphics.mouse.MouseEvent)
      * @param e the event
      */
     @Override
@@ -84,7 +84,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
         while (iterator.hasNext()) {
             MouseEventType et = iterator.next();
             if (et == MouseEventType.MOUSE_MOVED) {
-                handler.mouseMoved(new org.academiadecodigo.simplegraphics.mouse.MouseEvent(e.getX(), e.getY(), MouseEventType.MOUSE_MOVED));
+                handler.mouseMoved(new simplegraphics.src.org.academiadecodigo.simplegraphics.mouse.MouseEvent(e.getX(), e.getY(), MouseEventType.MOUSE_MOVED));
             }
 
         }

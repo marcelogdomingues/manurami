@@ -1,4 +1,4 @@
-package org.academiadecodigo.simplegraphics.pictures;
+package simplegraphics.src.org.academiadecodigo.simplegraphics.pictures;
 
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
@@ -8,6 +8,7 @@ import org.academiadecodigo.simplegraphics.graphics.Shape;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;

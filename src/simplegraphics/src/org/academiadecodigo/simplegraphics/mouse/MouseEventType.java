@@ -1,4 +1,4 @@
-package org.academiadecodigo.simplegraphics.mouse;
+package simplegraphics.src.org.academiadecodigo.simplegraphics.mouse;
 
 /**
  * The type of events supported by the Mouse
