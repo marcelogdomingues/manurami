@@ -10,10 +10,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-        Rectangle rectangle = new Rectangle(10, 10, 700, 700);
-        rectangle.setColor(Color.BLACK);
-        rectangle.fill();
+        GameManager gameManager = new GameManager();
+        gameManager.drawBackground(Color.BLACK, 10, 10, 700, 700);
 
         /*
         Ellipse ellipse = new Ellipse(50, 50, 100, 100);

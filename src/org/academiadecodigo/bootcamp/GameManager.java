@@ -1,9 +1,12 @@
 package org.academiadecodigo.bootcamp;
 
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+
+import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public class GameManager implements KeyboardHandler {
 
@@ -107,5 +110,11 @@ public class GameManager implements KeyboardHandler {
             default:
                 break;
         }
+    }
+
+    public void drawBackground(Color backgroundColor, int xMargin, int yMargin, int width, int height){
+        Rectangle rectangle = new Rectangle(xMargin, yMargin, width, height);
+        rectangle.setColor(backgroundColor);
+        rectangle.fill();
     }
 }
