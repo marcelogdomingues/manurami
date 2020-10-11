@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         GameManager gameManager = new GameManager();
-        gameManager.start(700, 700, 10, 10, Color.RED);
+        gameManager.start(700, 700, 10, 10, Color.BLACK);
 
         /*
         Ellipse ellipse = new Ellipse(50, 50, 100, 100);
