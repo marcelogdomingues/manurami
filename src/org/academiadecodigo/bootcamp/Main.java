@@ -12,7 +12,7 @@ public class Main {
 
 
         Rectangle rectangle = new Rectangle(10, 10, 800, 1000);
-        rectangle.setColor(Color.CYAN);
+        rectangle.setColor(Color.RED);
         rectangle.fill();
 
         Ellipse ellipse = new Ellipse(50, 50, 100, 100);
