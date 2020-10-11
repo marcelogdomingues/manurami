@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/manurami.iml" filepath="$PROJECT_DIR$/.idea/manurami.iml" />
+      <module fileurl="file://$PROJECT_DIR$/simplegfx-handson.iml" filepath="$PROJECT_DIR$/simplegfx-handson.iml" />
     </modules>
   </component>
 </project>
