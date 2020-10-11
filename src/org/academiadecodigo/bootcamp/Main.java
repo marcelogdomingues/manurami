@@ -11,10 +11,11 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Rectangle rectangle = new Rectangle(10, 10, 800, 1000);
-        rectangle.setColor(Color.RED);
+        Rectangle rectangle = new Rectangle(10, 10, 700, 700);
+        rectangle.setColor(Color.BLACK);
         rectangle.fill();
 
+        /*
         Ellipse ellipse = new Ellipse(50, 50, 100, 100);
         ellipse.fill();
 
@@ -31,6 +32,8 @@ public class Main {
         controls.setMc(mc);
 
         controls.init();
+
+         */
 
     }
 }
