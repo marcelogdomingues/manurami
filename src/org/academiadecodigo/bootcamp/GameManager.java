@@ -1,19 +1,17 @@
 package org.academiadecodigo.bootcamp;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-
-import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public class GameManager implements KeyboardHandler {
 
     private Keyboard keyboard;
     // private MC mc;
 
-    public void start(){
+    public void start(int width, int height, int xMargin, int yMargin, Color backgroundColor){
 
         {
             keyboard = new Keyboard(this);
@@ -54,6 +52,10 @@ public class GameManager implements KeyboardHandler {
             spacePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             keyboard.addEventListener(spacePressed);
         } //Listening to SPACE key
+
+        GameLayout gameLayout = new GameLayout(width, height, xMargin, yMargin, backgroundColor);
+        gameLayout.drawBackground();
+        gameLayout.drawMenu(true);
     }
 
     /* public void setMc(MC mc) {
@@ -112,9 +114,4 @@ public class GameManager implements KeyboardHandler {
         }
     }
 
-    public void drawBackground(Color backgroundColor, int xMargin, int yMargin, int width, int height){
-        Rectangle rectangle = new Rectangle(xMargin, yMargin, width, height);
-        rectangle.setColor(backgroundColor);
-        rectangle.fill();
-    }
 }
