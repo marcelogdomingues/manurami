@@ -81,13 +81,12 @@ public class GameManager implements KeyboardHandler {
 
         switch(keyboardEvent.getKey()){
             case(KeyboardEvent.KEY_W):
+                menuSound.playSound(soundFile);
                 if(!menuLocked){
                     if(selectedMenuOption == MenuOption.values()[0]){
-                        menuSound.playSound(soundFile);
                         gameLayout.getMarker().translate(0, 50 * (MenuOption.values().length - 1));
                         selectedMenuOption = MenuOption.values()[MenuOption.values().length - 1];
                     }else{
-                        menuSound.playSound(soundFile);
                         gameLayout.getMarker().translate(0, -50);
                         selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() - 1];
                     }
@@ -98,13 +97,12 @@ public class GameManager implements KeyboardHandler {
                 //nada no menu
                 break;
             case(KeyboardEvent.KEY_S):
+                menuSound.playSound(soundFile);
                 if(!menuLocked){
                     if(selectedMenuOption == MenuOption.values()[MenuOption.values().length - 1]){
-                        menuSound.playSound(soundFile);
                         gameLayout.getMarker().translate(0, -50 * (MenuOption.values().length - 1));
                         selectedMenuOption = MenuOption.values()[0];
                     }else{
-                        menuSound.playSound(soundFile);
                         gameLayout.getMarker().translate(0, 50);
                         selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() + 1];
                     }
@@ -114,6 +112,7 @@ public class GameManager implements KeyboardHandler {
                 //nada no menu
                 break;
             case(KeyboardEvent.KEY_SPACE):
+                menuSound.playSound(soundFile);
                 if(!menuLocked){
                     menuSound.playSound(soundFile);
                     if(selectedMenuOption == MenuOption.EXIT){
