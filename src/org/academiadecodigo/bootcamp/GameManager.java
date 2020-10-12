@@ -1,10 +1,14 @@
 package org.academiadecodigo.bootcamp;
 
+import org.academiadecodigo.bootcamp.game.GameLayout;
+import org.academiadecodigo.bootcamp.resources.Sound;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+
+import java.io.File;
 
 public class GameManager implements KeyboardHandler {
 
@@ -56,6 +60,10 @@ public class GameManager implements KeyboardHandler {
         GameLayout gameLayout = new GameLayout(width, height, xMargin, yMargin, backgroundColor);
         gameLayout.drawBackground();
         gameLayout.drawMenu(true);
+        Sound gameSound = new Sound();
+
+        File soundFile = new File("file_example_WAV_10MG.wav");
+        gameSound.playSound(soundFile);
     }
 
     /* public void setMc(MC mc) {
