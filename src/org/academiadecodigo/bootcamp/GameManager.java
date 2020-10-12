@@ -89,16 +89,23 @@ public class GameManager implements KeyboardHandler {
         menuSound.playSound(soundFile);
 
         switch (keyboardEvent.getKey()) {
+
             case (KeyboardEvent.KEY_W):
+
                 if (!menuLocked) {
+
                     if (selectedMenuOption == MenuOption.values()[0]) {
                         gameLayout.getMarker().translate(0, 50 * (MenuOption.values().length - 1));
                         selectedMenuOption = MenuOption.values()[MenuOption.values().length - 1];
+
                     } else {
+
                         gameLayout.getMarker().translate(0, -50);
                         selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() - 1];
+
                     }
                 }
+
                 break;
 
             case (KeyboardEvent.KEY_A):
@@ -106,15 +113,21 @@ public class GameManager implements KeyboardHandler {
                 break;
 
             case (KeyboardEvent.KEY_S):
+
                 if (!menuLocked) {
+
                     if (selectedMenuOption == MenuOption.values()[MenuOption.values().length - 1]) {
                         gameLayout.getMarker().translate(0, -50 * (MenuOption.values().length - 1));
                         selectedMenuOption = MenuOption.values()[0];
+
                     } else {
+
                         gameLayout.getMarker().translate(0, 50);
                         selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() + 1];
+
                     }
                 }
+
                 break;
 
             case (KeyboardEvent.KEY_D):
@@ -122,35 +135,53 @@ public class GameManager implements KeyboardHandler {
                 break;
 
             case (KeyboardEvent.KEY_SPACE):
+
                 if (!menuLocked) {
+
                     if (selectedMenuOption == MenuOption.EXIT) {
+
                         System.exit(0);
+
                     } else {
+
                         gameLayout.closeMenu();
                         gameLayout.drawInstructions();
                         menuLocked = true;
+
                     }
+
                 } else {
+
                     gameLayout.closeInstructions();
                     gameLayout.drawMenu();
                     gameLayout.getMarker().translate(0, 50 * (MenuOption.valueOf(selectedMenuOption.toString()).ordinal()));
                     menuLocked = false;
+
                 }
 
-            case (KeyboardEvent.KEY_SPACE):
+            case (KeyEvent.VK_ENTER):
+
                 if (!menuLocked) {
+
                     if (selectedMenuOption == MenuOption.EXIT) {
+
                         System.exit(0);
+
                     } else {
+
                         gameLayout.closeMenu();
                         gameLayout.drawInstructions();
                         menuLocked = true;
+
                     }
+
                 } else {
+
                     gameLayout.closeInstructions();
                     gameLayout.drawMenu();
                     gameLayout.getMarker().translate(0, 50 * (MenuOption.valueOf(selectedMenuOption.toString()).ordinal()));
                     menuLocked = false;
+
                 }
 
         }
