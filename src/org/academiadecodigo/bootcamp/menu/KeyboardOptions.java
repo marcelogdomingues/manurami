@@ -17,7 +17,7 @@ public class KeyboardOptions implements KeyboardHandler {
     private MenuOption selectedMenuOption;
     private boolean menuLocked;
 
-    public void menuOptions(GameLayout gameLayout){
+    public void menuOptions(GameLayout gameLayout) {
 
         this.gameLayout = gameLayout;
 
