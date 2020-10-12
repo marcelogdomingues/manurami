@@ -102,6 +102,8 @@ public class GameManager implements KeyboardHandler {
             case(KeyboardEvent.KEY_SPACE):
                 if(selectedMenuOption == MenuOption.EXIT){
                     System.exit(0);
+                }else{
+                    gameLayout.closeMenu();
                 }
         }
 

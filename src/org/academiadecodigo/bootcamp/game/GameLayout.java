@@ -13,6 +13,8 @@ public class GameLayout {
     private int yMargin;
     private Color backgroundColor;
     private Rectangle marker;
+    private Text title;
+    private Text[] menuOptions = new Text[MenuOption.values().length];
 
     public GameLayout(int width, int height, int xMargin, int yMargin, Color backgroundColor) {
         this.width = width;
@@ -33,7 +35,7 @@ public class GameLayout {
     }
 
     public void drawTitle(boolean visible){
-        Text title = new Text(width/2 - xMargin, 100, "MANURAMI");
+        title = new Text(width/2 - xMargin, 100, "MANURAMI");
         title.grow(100, 40);
         title.setColor(Color.WHITE);
         title.draw();
@@ -41,10 +43,10 @@ public class GameLayout {
 
     public void drawMenuOptions(boolean visible, MenuOption optionName){
         int spacing = MenuOption.valueOf(optionName.toString()).ordinal() * 50;
-        Text menuOption = new Text(350, 200 + spacing, optionName.toString());
-        menuOption.setColor(Color.WHITE);
-        menuOption.grow(20, 8);
-        menuOption.draw();
+        menuOptions[MenuOption.valueOf(optionName.toString()).ordinal()] = new Text(350, 200 + spacing, optionName.toString());
+        menuOptions[MenuOption.valueOf(optionName.toString()).ordinal()].setColor(Color.WHITE);
+        menuOptions[MenuOption.valueOf(optionName.toString()).ordinal()].grow(20, 8);
+        menuOptions[MenuOption.valueOf(optionName.toString()).ordinal()].draw();
     }
 
     public void drawMarker(){
@@ -58,5 +60,13 @@ public class GameLayout {
             drawMenuOptions(true, menuOption);
         }
         drawMarker();
+    }
+
+    public void closeMenu(){
+        title.delete();
+        marker.delete();
+        for(Text menuOption : menuOptions){
+            menuOption.delete();
+        }
     }
 }
