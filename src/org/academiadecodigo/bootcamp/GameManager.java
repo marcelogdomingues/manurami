@@ -59,7 +59,8 @@ public class GameManager implements KeyboardHandler {
 
         GameLayout gameLayout = new GameLayout(width, height, xMargin, yMargin, backgroundColor);
         gameLayout.drawBackground();
-        gameLayout.drawMenu(true);
+        gameLayout.drawTitle(true);
+        gameLayout.drawMenu();
         Sound gameSound = new Sound();
 
         File soundFile = new File("file_example_WAV_10MG.wav");
