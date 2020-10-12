@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp.menu;
 
-public enum MenuOptions {
+public enum MenuOption {
 
     START,
     INSTRUCTIONS,

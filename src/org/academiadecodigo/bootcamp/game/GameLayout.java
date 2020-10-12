@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp.game;
 
-import org.academiadecodigo.bootcamp.menu.MenuOptions;
+import org.academiadecodigo.bootcamp.menu.MenuOption;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -12,6 +12,7 @@ public class GameLayout {
     private int xMargin;
     private int yMargin;
     private Color backgroundColor;
+    private Rectangle marker;
 
     public GameLayout(int width, int height, int xMargin, int yMargin, Color backgroundColor) {
         this.width = width;
@@ -34,8 +35,8 @@ public class GameLayout {
         title.draw();
     }
 
-    public void drawMenuOptions(boolean visible, MenuOptions optionName){
-        int spacing = MenuOptions.valueOf(optionName.toString()).ordinal() * 50;
+    public void drawMenuOptions(boolean visible, MenuOption optionName){
+        int spacing = MenuOption.valueOf(optionName.toString()).ordinal() * 50;
         Text menuOption = new Text(350, 200 + spacing, optionName.toString());
         menuOption.setColor(Color.WHITE);
         menuOption.grow(20, 8);
@@ -43,8 +44,35 @@ public class GameLayout {
     }
 
     public void drawMenu(){
-        for(MenuOptions menuOptions : MenuOptions.values()){
-            drawMenuOptions(true, menuOptions);
+        for(MenuOption menuOption : MenuOption.values()){
+            drawMenuOptions(true, menuOption);
+        }
+
+        drawMarker();
+    }
+
+    public void drawMarker(){
+        marker = new Rectangle(300, 205, 10, 10);
+        marker.setColor(Color.WHITE);
+        marker.fill();
+    }
+
+    public void moveMarker(MenuOption menuOption){
+        switch(menuOption){
+            case START:
+                marker.translate(0, 200);
+                break;
+            case INSTRUCTIONS:
+                marker.translate(0, 250);
+                break;
+            case CREDITS:
+                marker.translate(0, 300);
+                break;
+            case EXIT:
+                marker.translate(0, 350);
+                break;
+            default:
+                break;
         }
     }
 }

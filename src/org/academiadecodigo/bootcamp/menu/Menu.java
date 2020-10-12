@@ -2,7 +2,7 @@ package org.academiadecodigo.bootcamp.menu;
 
 public class Menu {
 
-    private MenuOptions play;
+    private MenuOption play;
 
     public static void Menu(){
 

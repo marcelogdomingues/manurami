@@ -1,21 +1,24 @@
 package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.game.GameLayout;
+import org.academiadecodigo.bootcamp.menu.MenuOption;
 import org.academiadecodigo.bootcamp.resources.Sound;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-
 import java.io.File;
 
 public class GameManager implements KeyboardHandler {
 
     private Keyboard keyboard;
+    private MenuOption selectedMenuOption;
     // private MC mc;
 
     public void start(int width, int height, int xMargin, int yMargin, Color backgroundColor){
+
+        selectedMenuOption = MenuOption.START;
 
         {
             keyboard = new Keyboard(this);
