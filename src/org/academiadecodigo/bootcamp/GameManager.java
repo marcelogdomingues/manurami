@@ -122,27 +122,4 @@ public class GameManager implements KeyboardHandler {
 
     }
 
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-        switch(keyboardEvent.getKey()){
-            case(KeyboardEvent.KEY_W):
-                //ir para cima no menu
-                break;
-            case(KeyboardEvent.KEY_A):
-                //nada no menu
-                break;
-            case(KeyboardEvent.KEY_S):
-                //ir para baixo no menu
-                break;
-            case(KeyboardEvent.KEY_D):
-                //nada no menu
-                break;
-            case(KeyboardEvent.KEY_SPACE):
-                //seleccionar opcção
-                break;
-            default:
-                break;
-        }
-    }
-
 }
