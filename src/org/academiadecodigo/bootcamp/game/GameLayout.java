@@ -15,6 +15,8 @@ public class GameLayout {
     private Rectangle marker;
     private Text title;
     private Text[] menuOptions = new Text[MenuOption.values().length];
+    private Text instructions;
+    private Text credits;
 
     public GameLayout(int width, int height, int xMargin, int yMargin, Color backgroundColor) {
         this.width = width;
@@ -69,5 +71,16 @@ public class GameLayout {
         for(Text menuOption : menuOptions){
             menuOption.delete();
         }
+    }
+
+    public void drawInstructions(){
+        instructions = new Text(width/2 - xMargin, height/2 - yMargin, "Instructions...");
+        instructions.grow(20, 8);
+        instructions.setColor(Color.WHITE);
+        instructions.draw();
+    }
+
+    public void closeInstructions(){
+        instructions.delete();
     }
 }

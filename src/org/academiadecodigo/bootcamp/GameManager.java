@@ -109,9 +109,11 @@ public class GameManager implements KeyboardHandler {
                         System.exit(0);
                     }else{
                         gameLayout.closeMenu();
+                        gameLayout.drawInstructions();
                         menuLocked = true;
                     }
                 }else{
+                    gameLayout.closeInstructions();
                     gameLayout.drawMenu();
                     gameLayout.getMarker().translate(0, 50 * (MenuOption.valueOf(selectedMenuOption.toString()).ordinal()));
                     menuLocked = false;
