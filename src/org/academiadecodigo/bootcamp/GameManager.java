@@ -74,27 +74,37 @@ public class GameManager implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+
+        Sound menuSound = new Sound();
+        File soundFile = new File("resources/sounds/btn_sound_menu.wav");
+
+
         switch(keyboardEvent.getKey()){
             case(KeyboardEvent.KEY_W):
                 if(!menuLocked){
                     if(selectedMenuOption == MenuOption.values()[0]){
+                        menuSound.playSound(soundFile);
                         gameLayout.getMarker().translate(0, 50 * (MenuOption.values().length - 1));
                         selectedMenuOption = MenuOption.values()[MenuOption.values().length - 1];
                     }else{
+                        menuSound.playSound(soundFile);
                         gameLayout.getMarker().translate(0, -50);
                         selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() - 1];
                     }
                 }
                 break;
             case(KeyboardEvent.KEY_A):
+
                 //nada no menu
                 break;
             case(KeyboardEvent.KEY_S):
                 if(!menuLocked){
                     if(selectedMenuOption == MenuOption.values()[MenuOption.values().length - 1]){
+                        menuSound.playSound(soundFile);
                         gameLayout.getMarker().translate(0, -50 * (MenuOption.values().length - 1));
                         selectedMenuOption = MenuOption.values()[0];
                     }else{
+                        menuSound.playSound(soundFile);
                         gameLayout.getMarker().translate(0, 50);
                         selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() + 1];
                     }
@@ -105,9 +115,11 @@ public class GameManager implements KeyboardHandler {
                 break;
             case(KeyboardEvent.KEY_SPACE):
                 if(!menuLocked){
+                    menuSound.playSound(soundFile);
                     if(selectedMenuOption == MenuOption.EXIT){
                         System.exit(0);
                     }else{
+                        menuSound.playSound(soundFile);
                         gameLayout.closeMenu();
                         gameLayout.drawInstructions();
                         menuLocked = true;
