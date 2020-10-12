@@ -109,11 +109,9 @@ public class GameManager implements KeyboardHandler {
                 break;
             case(KeyboardEvent.KEY_SPACE):
                 if(!menuLocked){
-                    menuSound.playSound(soundFile);
                     if(selectedMenuOption == MenuOption.EXIT){
                         System.exit(0);
                     }else{
-                        menuSound.playSound(soundFile);
                         gameLayout.closeMenu();
                         gameLayout.drawInstructions();
                         menuLocked = true;
