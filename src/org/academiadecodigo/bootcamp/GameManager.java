@@ -76,11 +76,10 @@ public class GameManager implements KeyboardHandler {
 
         Sound menuSound = new Sound();
         File soundFile = new File("resources/sounds/btn_sound_menu.wav");
-
+        menuSound.playSound(soundFile);
 
         switch(keyboardEvent.getKey()){
             case(KeyboardEvent.KEY_W):
-                menuSound.playSound(soundFile);
                 if(!menuLocked){
                     if(selectedMenuOption == MenuOption.values()[0]){
                         gameLayout.getMarker().translate(0, 50 * (MenuOption.values().length - 1));
@@ -92,11 +91,9 @@ public class GameManager implements KeyboardHandler {
                 }
                 break;
             case(KeyboardEvent.KEY_A):
-
                 //nada no menu
                 break;
             case(KeyboardEvent.KEY_S):
-                menuSound.playSound(soundFile);
                 if(!menuLocked){
                     if(selectedMenuOption == MenuOption.values()[MenuOption.values().length - 1]){
                         gameLayout.getMarker().translate(0, -50 * (MenuOption.values().length - 1));
@@ -111,7 +108,6 @@ public class GameManager implements KeyboardHandler {
                 //nada no menu
                 break;
             case(KeyboardEvent.KEY_SPACE):
-                menuSound.playSound(soundFile);
                 if(!menuLocked){
                     menuSound.playSound(soundFile);
                     if(selectedMenuOption == MenuOption.EXIT){
@@ -133,8 +129,6 @@ public class GameManager implements KeyboardHandler {
     }
 
     @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-
-    }
+    public void keyReleased(KeyboardEvent keyboardEvent) {}
 
 }
