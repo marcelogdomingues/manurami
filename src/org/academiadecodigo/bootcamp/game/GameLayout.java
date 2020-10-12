@@ -22,6 +22,10 @@ public class GameLayout {
         this.backgroundColor = backgroundColor;
     }
 
+    public Rectangle getMarker() {
+        return marker;
+    }
+
     public void drawBackground(){
         Rectangle rectangle = new Rectangle(xMargin, yMargin, width, height);
         rectangle.setColor(backgroundColor);
@@ -43,36 +47,16 @@ public class GameLayout {
         menuOption.draw();
     }
 
-    public void drawMenu(){
-        for(MenuOption menuOption : MenuOption.values()){
-            drawMenuOptions(true, menuOption);
-        }
-
-        drawMarker();
-    }
-
     public void drawMarker(){
         marker = new Rectangle(300, 205, 10, 10);
         marker.setColor(Color.WHITE);
         marker.fill();
     }
 
-    public void moveMarker(MenuOption menuOption){
-        switch(menuOption){
-            case START:
-                marker.translate(0, 200);
-                break;
-            case INSTRUCTIONS:
-                marker.translate(0, 250);
-                break;
-            case CREDITS:
-                marker.translate(0, 300);
-                break;
-            case EXIT:
-                marker.translate(0, 350);
-                break;
-            default:
-                break;
+    public void drawMenu(){
+        for(MenuOption menuOption : MenuOption.values()){
+            drawMenuOptions(true, menuOption);
         }
+        drawMarker();
     }
 }

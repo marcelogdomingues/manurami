@@ -13,12 +13,13 @@ import java.io.File;
 public class GameManager implements KeyboardHandler {
 
     private Keyboard keyboard;
+    private GameLayout gameLayout;
     private MenuOption selectedMenuOption;
     // private MC mc;
 
     public void start(int width, int height, int xMargin, int yMargin, Color backgroundColor){
 
-        selectedMenuOption = MenuOption.START;
+        selectedMenuOption = MenuOption.values()[0];
 
         {
             keyboard = new Keyboard(this);
@@ -60,7 +61,7 @@ public class GameManager implements KeyboardHandler {
             keyboard.addEventListener(spacePressed);
         } //Listening to SPACE key
 
-        GameLayout gameLayout = new GameLayout(width, height, xMargin, yMargin, backgroundColor);
+        gameLayout = new GameLayout(width, height, xMargin, yMargin, backgroundColor);
         gameLayout.drawBackground();
         gameLayout.drawTitle(true);
         gameLayout.drawMenu();
@@ -75,13 +76,25 @@ public class GameManager implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch(keyboardEvent.getKey()){
             case(KeyboardEvent.KEY_W):
-                //ir para cima no menu
+                if(selectedMenuOption == MenuOption.values()[0]){
+                    gameLayout.getMarker().translate(0, 50 * (MenuOption.values().length - 1));
+                    selectedMenuOption = MenuOption.values()[MenuOption.values().length - 1];
+                }else{
+                    gameLayout.getMarker().translate(0, -50);
+                    selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() - 1];
+                }
                 break;
             case(KeyboardEvent.KEY_A):
                 //nada no menu
                 break;
             case(KeyboardEvent.KEY_S):
-                //ir para baixo no menu
+                if(selectedMenuOption == MenuOption.values()[MenuOption.values().length - 1]){
+                    gameLayout.getMarker().translate(0, -50 * (MenuOption.values().length - 1));
+                    selectedMenuOption = MenuOption.values()[0];
+                }else{
+                    gameLayout.getMarker().translate(0, 50);
+                    selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() + 1];
+                }
                 break;
             case(KeyboardEvent.KEY_D):
                 //nada no menu
