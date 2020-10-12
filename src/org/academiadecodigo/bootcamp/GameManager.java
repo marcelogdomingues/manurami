@@ -16,7 +16,6 @@ public class GameManager implements KeyboardHandler {
     private GameLayout gameLayout;
     private MenuOption selectedMenuOption;
     private boolean menuLocked;
-    // private MC mc;
 
     public void start(int width, int height, int xMargin, int yMargin, Color backgroundColor){
 

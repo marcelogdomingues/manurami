@@ -5,6 +5,6 @@ public enum MenuOption {
     START,
     INSTRUCTIONS,
     CREDITS,
-    EXIT
+    EXIT,
 }
 

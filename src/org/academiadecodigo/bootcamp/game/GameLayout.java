@@ -43,12 +43,13 @@ public class GameLayout {
         title.draw();
     }
 
-    public void drawMenuOptions(boolean visible, MenuOption optionName){
-        int spacing = MenuOption.valueOf(optionName.toString()).ordinal() * 50;
-        menuOptions[MenuOption.valueOf(optionName.toString()).ordinal()] = new Text(350, 200 + spacing, optionName.toString());
-        menuOptions[MenuOption.valueOf(optionName.toString()).ordinal()].setColor(Color.WHITE);
-        menuOptions[MenuOption.valueOf(optionName.toString()).ordinal()].grow(20, 8);
-        menuOptions[MenuOption.valueOf(optionName.toString()).ordinal()].draw();
+    public void drawMenuOptions(MenuOption optionName){
+        int indexMenuOption = MenuOption.valueOf(optionName.toString()).ordinal();
+        int spacing = indexMenuOption * 50;
+        menuOptions[indexMenuOption] = new Text(350, 200 + spacing, optionName.toString());
+        menuOptions[indexMenuOption].setColor(Color.WHITE);
+        menuOptions[indexMenuOption].grow(20, 8);
+        menuOptions[indexMenuOption].draw();
     }
 
     public void drawMarker(){
@@ -60,7 +61,7 @@ public class GameLayout {
     public void drawMenu(){
         drawTitle();
         for(MenuOption menuOption : MenuOption.values()){
-            drawMenuOptions(true, menuOption);
+            drawMenuOptions(menuOption);
         }
         drawMarker();
     }
