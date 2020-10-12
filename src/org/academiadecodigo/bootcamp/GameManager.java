@@ -15,6 +15,7 @@ public class GameManager implements KeyboardHandler {
     private Keyboard keyboard;
     private GameLayout gameLayout;
     private MenuOption selectedMenuOption;
+    private boolean menuLocked;
     // private MC mc;
 
     public void start(int width, int height, int xMargin, int yMargin, Color backgroundColor){
@@ -63,7 +64,6 @@ public class GameManager implements KeyboardHandler {
 
         gameLayout = new GameLayout(width, height, xMargin, yMargin, backgroundColor);
         gameLayout.drawBackground();
-        gameLayout.drawTitle(true);
         gameLayout.drawMenu();
 
         //Perceber com o marcelo como funciona esta parte do sound:
@@ -76,34 +76,43 @@ public class GameManager implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch(keyboardEvent.getKey()){
             case(KeyboardEvent.KEY_W):
-                if(selectedMenuOption == MenuOption.values()[0]){
-                    gameLayout.getMarker().translate(0, 50 * (MenuOption.values().length - 1));
-                    selectedMenuOption = MenuOption.values()[MenuOption.values().length - 1];
-                }else{
-                    gameLayout.getMarker().translate(0, -50);
-                    selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() - 1];
+                if(!menuLocked){
+                    if(selectedMenuOption == MenuOption.values()[0]){
+                        gameLayout.getMarker().translate(0, 50 * (MenuOption.values().length - 1));
+                        selectedMenuOption = MenuOption.values()[MenuOption.values().length - 1];
+                    }else{
+                        gameLayout.getMarker().translate(0, -50);
+                        selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() - 1];
+                    }
                 }
                 break;
             case(KeyboardEvent.KEY_A):
                 //nada no menu
                 break;
             case(KeyboardEvent.KEY_S):
-                if(selectedMenuOption == MenuOption.values()[MenuOption.values().length - 1]){
-                    gameLayout.getMarker().translate(0, -50 * (MenuOption.values().length - 1));
-                    selectedMenuOption = MenuOption.values()[0];
-                }else{
-                    gameLayout.getMarker().translate(0, 50);
-                    selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() + 1];
+                if(!menuLocked){
+                    if(selectedMenuOption == MenuOption.values()[MenuOption.values().length - 1]){
+                        gameLayout.getMarker().translate(0, -50 * (MenuOption.values().length - 1));
+                        selectedMenuOption = MenuOption.values()[0];
+                    }else{
+                        gameLayout.getMarker().translate(0, 50);
+                        selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() + 1];
+                    }
                 }
                 break;
             case(KeyboardEvent.KEY_D):
                 //nada no menu
                 break;
             case(KeyboardEvent.KEY_SPACE):
-                if(selectedMenuOption == MenuOption.EXIT){
-                    System.exit(0);
+                if(!menuLocked){
+                    if(selectedMenuOption == MenuOption.EXIT){
+                        System.exit(0);
+                    }else{
+                        gameLayout.closeMenu();
+                        menuLocked = true;
+                    }
                 }else{
-                    gameLayout.closeMenu();
+                    gameLayout.drawMenu();
                 }
         }
 

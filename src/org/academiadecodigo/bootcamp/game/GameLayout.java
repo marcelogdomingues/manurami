@@ -34,7 +34,7 @@ public class GameLayout {
         rectangle.fill();
     }
 
-    public void drawTitle(boolean visible){
+    public void drawTitle(){
         title = new Text(width/2 - xMargin, 100, "MANURAMI");
         title.grow(100, 40);
         title.setColor(Color.WHITE);
@@ -56,6 +56,7 @@ public class GameLayout {
     }
 
     public void drawMenu(){
+        drawTitle();
         for(MenuOption menuOption : MenuOption.values()){
             drawMenuOptions(true, menuOption);
         }
