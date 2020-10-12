@@ -128,5 +128,4 @@ public class GameManager implements KeyboardHandler {
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {}
-
 }
