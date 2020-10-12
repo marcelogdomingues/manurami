@@ -69,7 +69,7 @@ public class KeyboardOptions implements KeyboardHandler {
             enterPressed.setKey(KeyEvent.VK_ENTER);
             enterPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             keyboard.addEventListener(enterPressed);
-        }
+        } //Listening to ENTER key
 
 
     }
