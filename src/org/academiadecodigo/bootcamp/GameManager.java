@@ -113,6 +113,8 @@ public class GameManager implements KeyboardHandler {
                     }
                 }else{
                     gameLayout.drawMenu();
+                    gameLayout.getMarker().translate(0, 50 * (MenuOption.valueOf(selectedMenuOption.toString()).ordinal()));
+                    menuLocked = false;
                 }
         }
 
