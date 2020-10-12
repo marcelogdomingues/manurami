@@ -6,6 +6,5 @@ public enum MenuOptions {
     INSTRUCTIONS,
     CREDITS,
     EXIT
-
 }
 

@@ -61,23 +61,15 @@ public class GameManager implements KeyboardHandler {
         gameLayout.drawBackground();
         gameLayout.drawTitle(true);
         gameLayout.drawMenu();
-        Sound gameSound = new Sound();
 
+        //Perceber com o marcelo como funciona esta parte do sound:
+        Sound gameSound = new Sound();
         File soundFile = new File("file_example_WAV_10MG.wav");
         gameSound.playSound(soundFile);
     }
 
-    /* public void setMc(MC mc) {
-        this.mc = mc;
-    } */
-
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-
-        /*if(keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT){
-            mc.moveRight();
-        }*/
-
         switch(keyboardEvent.getKey()){
             case(KeyboardEvent.KEY_W):
                 //ir para cima no menu

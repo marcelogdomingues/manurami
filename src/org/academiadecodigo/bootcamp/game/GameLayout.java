@@ -1,14 +1,9 @@
 package org.academiadecodigo.bootcamp.game;
 
-import org.academiadecodigo.bootcamp.menu.Menu;
 import org.academiadecodigo.bootcamp.menu.MenuOptions;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-
-import java.util.zip.CheckedOutputStream;
 
 public class GameLayout {
 
