@@ -1,5 +1,7 @@
-package org.academiadecodigo.bootcamp;
+package org.academiadecodigo.bootcamp.game;
 
+import org.academiadecodigo.bootcamp.menu.Menu;
+import org.academiadecodigo.bootcamp.menu.MenuFormat;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -35,5 +37,7 @@ public class GameLayout {
         title.grow(100, 40);
         title.setColor(Color.WHITE);
         title.draw();
+        MenuFormat menuFormat = new MenuFormat();
+        menuFormat.drawMenuOption();
     }
 }
