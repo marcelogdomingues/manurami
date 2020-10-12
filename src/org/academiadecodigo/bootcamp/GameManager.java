@@ -2,10 +2,8 @@ package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.game.GameLayout;
 import org.academiadecodigo.bootcamp.menu.KeyboardOptions;
-import org.academiadecodigo.bootcamp.menu.MenuOption;
 import org.academiadecodigo.bootcamp.resources.Sound;
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 
 import java.io.File;
 
