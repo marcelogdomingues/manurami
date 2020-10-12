@@ -18,6 +18,7 @@ public class GameManager {
         gameLayout = new GameLayout(width, height, xMargin, yMargin, backgroundColor);
         gameLayout.drawBackground();
         gameLayout.drawMenu();
+        keyboardOptions.menuOptions(gameLayout);
 
         Sound gameSound = new Sound();
         File soundFile = new File("resources/sounds/menu_sound.wav");
