@@ -100,10 +100,9 @@ public class GameManager implements KeyboardHandler {
                 //nada no menu
                 break;
             case(KeyboardEvent.KEY_SPACE):
-                //seleccionar opcção
-                break;
-            default:
-                break;
+                if(selectedMenuOption == MenuOption.EXIT){
+                    System.exit(0);
+                }
         }
 
     }
