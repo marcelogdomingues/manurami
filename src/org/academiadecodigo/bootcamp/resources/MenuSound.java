@@ -14,7 +14,7 @@ public class MenuSound {
                 Clip clip = AudioSystem.getClip();
                 clip.open(AudioSystem.getAudioInputStream(Sound));
                 FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-                gainControl.setValue(10.0f); // Aumenta 10 decibeis
+                gainControl.setValue(20.0f); // Aumenta 10 decibeis
                 clip.start();
 
             } catch (Exception e) {
