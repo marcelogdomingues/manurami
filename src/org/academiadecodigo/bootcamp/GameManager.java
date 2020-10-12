@@ -68,7 +68,7 @@ public class GameManager implements KeyboardHandler {
 
         //Perceber com o marcelo como funciona esta parte do sound:
         Sound gameSound = new Sound();
-        File soundFile = new File("file_example_WAV_10MG.wav");
+        File soundFile = new File("resources/sounds/menu_sound.wav");
         gameSound.playSound(soundFile);
     }
 
