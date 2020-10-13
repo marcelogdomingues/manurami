@@ -173,6 +173,9 @@ public class KeyboardOptions implements KeyboardHandler {
 
                 if(gamePage == "Start"){
 
+                    gameLayout.closeGame();
+                    gameLayout.drawMenu();
+
                 }else if( gamePage == "Credits"){
 
                     gameLayout.closeCredits();
