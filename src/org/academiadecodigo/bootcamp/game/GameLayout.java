@@ -74,6 +74,7 @@ public class GameLayout {
         gameDisplay.drawKeyS();
         gameDisplay.drawKeyD();
         gameDisplay.drawEllipse(this);
+        System.out.println();
     }
 
     public void drawInstructions(){

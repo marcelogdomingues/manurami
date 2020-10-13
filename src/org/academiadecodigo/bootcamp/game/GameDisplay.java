@@ -38,6 +38,7 @@ public class GameDisplay {
 
     public void setScore(String score) {
         this.score = score;
+        System.out.println();
     }
 
     public void drawEllipse(GameLayout gameLayout) {
@@ -45,6 +46,8 @@ public class GameDisplay {
         target.setColor(Color.WHITE);
         target.draw();
     }
+
+
 
     /*public void drawSupportKeys() {
         supportKeys = new Picture(400, 200, "resources/img/ASD_graphics.JP2");
