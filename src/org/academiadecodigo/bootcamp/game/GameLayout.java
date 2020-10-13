@@ -53,7 +53,15 @@ public class GameLayout {
     }
 
     public void drawMarker(){
+        if (marker != null){
+            System.out.println(marker.getX() +"er:" + marker.getY());
+
+        }
         marker = new Rectangle(300, 205, 10, 10);
+        if (marker != null){
+            System.out.println(marker.getX() +":" + marker.getY());
+
+        }
         marker.setColor(Color.WHITE);
         marker.fill();
     }
@@ -64,6 +72,14 @@ public class GameLayout {
             drawMenuOptions(menuOption);
         }
         drawMarker();
+    }
+
+    public void closeMenu(){
+        title.delete();
+        marker.delete();
+        for(Text menuOption : menuOptions){
+            menuOption.delete();
+        }
     }
 
     public void drawGame() {
@@ -77,6 +93,10 @@ public class GameLayout {
         System.out.println();
     }
 
+    public void closeGame(){
+
+    }
+
     public void drawInstructions(){
         instructions = new Text(width/2 - xMargin, height/2 - yMargin, "Instructions...");
         instructions.grow(20, 8);
@@ -84,23 +104,19 @@ public class GameLayout {
         instructions.draw();
     }
 
-    public void drawCredits(){
-        instructions = new Text(width/2 - xMargin, height/2 - yMargin, "Credits...");
-        instructions.grow(20, 8);
-        instructions.setColor(Color.WHITE);
-        instructions.draw();
-    }
-
-    public void closeMenu(){
-        title.delete();
-        marker.delete();
-        for(Text menuOption : menuOptions){
-            menuOption.delete();
-        }
-    }
-
     public void closeInstructions(){
         instructions.delete();
+    }
+
+    public void drawCredits(){
+        credits = new Text(width/2 - xMargin, height/2 - yMargin, "Credits...");
+        credits.grow(20, 8);
+        credits.setColor(Color.WHITE);
+        credits.draw();
+    }
+
+    public void closeCredits(){
+        credits.delete();
     }
 
     public int getHeight() {

@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.menu;
 
+import jdk.swing.interop.SwingInterOpUtils;
 import org.academiadecodigo.bootcamp.game.GameLayout;
 import org.academiadecodigo.bootcamp.resources.Sound;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -16,6 +17,7 @@ public class KeyboardOptions implements KeyboardHandler {
     private GameLayout gameLayout;
     private MenuOption selectedMenuOption;
     private boolean menuLocked;
+    private String gamePage;
 
     public void menuOptions(GameLayout gameLayout) {
 
@@ -63,6 +65,14 @@ public class KeyboardOptions implements KeyboardHandler {
             enterPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             keyboard.addEventListener(enterPressed);
         } //Listening to ENTER key
+
+        {
+            keyboard = new Keyboard(this);
+            KeyboardEvent escapePressed = new KeyboardEvent();
+            escapePressed.setKey(KeyEvent.VK_ESCAPE);
+            escapePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+            keyboard.addEventListener(escapePressed);
+        } //Listening to ESCAPE key
 
 
     }
@@ -134,29 +144,51 @@ public class KeyboardOptions implements KeyboardHandler {
                         gameLayout.closeMenu();
                         gameLayout.drawCredits();
                         menuLocked = true;
+                        gamePage = "Credits";
 
                     } else if (selectedMenuOption == MenuOption.INSTRUCTIONS) {
-
                         gameLayout.closeMenu();
                         gameLayout.drawInstructions();
                         menuLocked = true;
+                        gamePage = "Instructions";
 
                     } else if (selectedMenuOption == MenuOption.START) {
 
                         gameLayout.closeMenu();
                         gameLayout.drawGame();
                         menuLocked = true;
+                        gamePage = "Start";
 
                     }
 
-                } else {
+                    selectedMenuOption = MenuOption.values()[0];
+
+                }
+
+                break;
+
+            case (KeyEvent.VK_ESCAPE):
+
+                menuLocked= false;
+
+                if(gamePage == "Start"){
+
+                }else if( gamePage == "Credits"){
+
+                    gameLayout.closeCredits();
+                    gameLayout.drawMenu();
+
+                }else if( gamePage == "Instructions"){
 
                     gameLayout.closeInstructions();
                     gameLayout.drawMenu();
-                    gameLayout.getMarker().translate(0, 50 * (MenuOption.valueOf(selectedMenuOption.toString()).ordinal()));
-                    menuLocked = false;
 
                 }
+                break;
+
+                /*gameLayout.closeMenu();
+                gameLayout.getMarker().translate(0, 50 * (MenuOption.valueOf(selectedMenuOption.toString()).ordinal()));
+                menuLocked = false;*/
 
         }
 
