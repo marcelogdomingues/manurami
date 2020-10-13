@@ -69,7 +69,11 @@ public class GameLayout {
     public void drawGame() {
         GameDisplay gameDisplay = new GameDisplay();
         gameDisplay.drawTextScore(this);
-
+        //gameDisplay.drawSupportKeys();
+        gameDisplay.drawKeyA();
+        gameDisplay.drawKeyS();
+        gameDisplay.drawKeyD();
+        gameDisplay.drawEllipse(this);
     }
 
     public void drawInstructions(){
