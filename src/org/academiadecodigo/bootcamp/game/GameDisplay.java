@@ -47,10 +47,9 @@ public class GameDisplay {
         target.draw();
     }
 
-
-
     /*public void drawSupportKeys() {
-        supportKeys = new Picture(400, 200, "resources/img/ASD_graphics.JP2");
+        supportKeys = new Picture(300, 300, "resources/img/ASD.png");
+        supportKeys.grow(120, 40);
         supportKeys.draw();
     }*/
 

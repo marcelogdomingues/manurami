@@ -154,10 +154,10 @@ public class KeyboardOptions implements KeyboardHandler {
 
                     } else if (selectedMenuOption == MenuOption.START) {
 
-                        gameLayout.closeMenu();
+                        /*gameLayout.closeMenu();
                         gameLayout.drawGame();
                         menuLocked = true;
-                        gamePage = "Start";
+                        gamePage = "Start";*/
 
                     }
 

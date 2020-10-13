@@ -53,15 +53,7 @@ public class GameLayout {
     }
 
     public void drawMarker(){
-        if (marker != null){
-            System.out.println(marker.getX() +"er:" + marker.getY());
-
-        }
         marker = new Rectangle(300, 205, 10, 10);
-        if (marker != null){
-            System.out.println(marker.getX() +":" + marker.getY());
-
-        }
         marker.setColor(Color.WHITE);
         marker.fill();
     }
