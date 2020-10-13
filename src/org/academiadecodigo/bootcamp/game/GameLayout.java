@@ -80,7 +80,7 @@ public class GameLayout {
     }
 
     public void drawCredits(){
-        instructions = new Text(width/2 - xMargin, height/2 - yMargin, "Credits");
+        instructions = new Text(width/2 - xMargin, height/2 - yMargin, "Credits...");
         instructions.grow(20, 8);
         instructions.setColor(Color.WHITE);
         instructions.draw();
@@ -94,11 +94,9 @@ public class GameLayout {
         }
     }
 
-
     public void closeInstructions(){
         instructions.delete();
     }
-
 
     public int getHeight() {
         return height;
