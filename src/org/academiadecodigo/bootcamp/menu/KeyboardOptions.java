@@ -55,13 +55,6 @@ public class KeyboardOptions implements KeyboardHandler {
             keyboard.addEventListener(dPressed);
         } //Listening to D key
 
-        {
-            keyboard = new Keyboard(this);
-            KeyboardEvent spacePressed = new KeyboardEvent();
-            spacePressed.setKey(KeyboardEvent.KEY_SPACE);
-            spacePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-            keyboard.addEventListener(spacePressed);
-        } //Listening to SPACE key
 
         {
             keyboard = new Keyboard(this);
@@ -127,42 +120,6 @@ public class KeyboardOptions implements KeyboardHandler {
                 //nada no menu
                 break;
 
-            case (KeyboardEvent.KEY_SPACE):
-
-                if (!menuLocked) {
-
-                    if (selectedMenuOption == MenuOption.EXIT) {
-
-                        System.exit(0);
-
-                    } else if (selectedMenuOption == MenuOption.CREDITS) {
-
-                        gameLayout.closeMenu();
-                        gameLayout.drawCredits();
-                        menuLocked = true;
-
-                    } else if (selectedMenuOption == MenuOption.INSTRUCTIONS) {
-
-                        gameLayout.closeMenu();
-                        gameLayout.drawInstructions();
-                        menuLocked = true;
-
-                    } else if (selectedMenuOption == MenuOption.START) {
-
-                        gameLayout.closeMenu();
-                        gameLayout.drawGame();
-                        menuLocked = true;
-
-                    }
-
-                } else {
-
-                    gameLayout.closeInstructions();
-                    gameLayout.drawMenu();
-                    gameLayout.getMarker().translate(0, 50 * (MenuOption.valueOf(selectedMenuOption.toString()).ordinal()));
-                    menuLocked = false;
-
-                }
 
             case (KeyEvent.VK_ENTER):
 
