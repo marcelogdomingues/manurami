@@ -2,9 +2,13 @@ package org.academiadecodigo.bootcamp.menu;
 
 public enum MenuOption {
 
-    START,
-    INSTRUCTIONS,
-    CREDITS,
-    EXIT,
+    START(1),
+    INSTRUCTIONS(2),
+    CREDITS(3),
+    EXIT(4),
+    ;
+
+    MenuOption(int i) {
+    }
 }
 

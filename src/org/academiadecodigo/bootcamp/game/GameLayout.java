@@ -66,12 +66,10 @@ public class GameLayout {
         drawMarker();
     }
 
-    public void closeMenu(){
-        title.delete();
-        marker.delete();
-        for(Text menuOption : menuOptions){
-            menuOption.delete();
-        }
+    public void drawGame() {
+        GameDisplay gameDisplay = new GameDisplay();
+        gameDisplay.drawTextScore(this);
+
     }
 
     public void drawInstructions(){
@@ -81,15 +79,26 @@ public class GameLayout {
         instructions.draw();
     }
 
+    public void drawCredits(){
+        instructions = new Text(width/2 - xMargin, height/2 - yMargin, "Credits");
+        instructions.grow(20, 8);
+        instructions.setColor(Color.WHITE);
+        instructions.draw();
+    }
+
+    public void closeMenu(){
+        title.delete();
+        marker.delete();
+        for(Text menuOption : menuOptions){
+            menuOption.delete();
+        }
+    }
+
+
     public void closeInstructions(){
         instructions.delete();
     }
 
-    public void drawGame() {
-        GameDisplay gameDisplay = new GameDisplay();
-        gameDisplay.drawTextScore(this);
-
-    }
 
     public int getHeight() {
         return height;

@@ -135,10 +135,22 @@ public class KeyboardOptions implements KeyboardHandler {
 
                         System.exit(0);
 
-                    } else {
+                    } else if (selectedMenuOption == MenuOption.CREDITS) {
+
+                        gameLayout.closeMenu();
+                        gameLayout.drawCredits();
+                        menuLocked = true;
+
+                    } else if (selectedMenuOption == MenuOption.INSTRUCTIONS) {
 
                         gameLayout.closeMenu();
                         gameLayout.drawInstructions();
+                        menuLocked = true;
+
+                    } else if (selectedMenuOption == MenuOption.START) {
+
+                        gameLayout.closeMenu();
+                        gameLayout.drawGame();
                         menuLocked = true;
 
                     }
@@ -160,10 +172,22 @@ public class KeyboardOptions implements KeyboardHandler {
 
                         System.exit(0);
 
-                    } else {
+                    } else if (selectedMenuOption == MenuOption.CREDITS) {
+
+                        gameLayout.closeMenu();
+                        gameLayout.drawCredits();
+                        menuLocked = true;
+
+                    } else if (selectedMenuOption == MenuOption.INSTRUCTIONS) {
 
                         gameLayout.closeMenu();
                         gameLayout.drawInstructions();
+                        menuLocked = true;
+
+                    } else if (selectedMenuOption == MenuOption.START) {
+
+                        gameLayout.closeMenu();
+                        gameLayout.drawGame();
                         menuLocked = true;
 
                     }
