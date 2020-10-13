@@ -84,4 +84,26 @@ public class GameLayout {
     public void closeInstructions(){
         instructions.delete();
     }
+
+    public void drawGame() {
+        GameDisplay gameDisplay = new GameDisplay();
+        gameDisplay.drawTextScore(this);
+
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getxMargin() {
+        return xMargin;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getyMargin() {
+        return yMargin;
+    }
 }
