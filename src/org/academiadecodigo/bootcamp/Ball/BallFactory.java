@@ -4,12 +4,20 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public class BallFactory {
 
-    private static Ball[] balls;
-
+    private Ball[] balls;
+    private int ballNumber;
     private double speed;
     private int ballScore;
-
+    private int ballCounter;
     private static final double chanceBallColor = 0.7;
+
+
+    public BallFactory(double speed, int ballScore,int ballNumber){
+        balls = new Ball[ballNumber];
+        this.ballScore = ballScore;
+        this.speed = speed;
+
+    }
 
     public Color randomColorBall(){
 
@@ -24,12 +32,18 @@ public class BallFactory {
             case YELLOW -> Color.YELLOW;
         };
 
-
-
     }
 
     public void makeBall(){
-        new Ball(randomColorBall() ,0, 350, 48, 48, 10, 10);
+        balls[ballCounter] = new Ball(randomColorBall() ,0, 350, 48, 48, speed, ballScore);
+        if(ballCounter < ballNumber - 1){
+            ballCounter++;
+        }else{
+            ballCounter = 0;
+        }
+
+
+
     }
 
 
