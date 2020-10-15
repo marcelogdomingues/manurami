@@ -75,13 +75,14 @@ public class GameLayout {
     }
 
     public void drawGame() {
-        GameDisplay gameDisplay = new GameDisplay();
-        gameDisplay.drawTextScore(this);
+        Game game = new Game();
+        game.drawTextScore(this);
         //gameDisplay.drawSupportKeys();
-        gameDisplay.drawKeyA();
-        gameDisplay.drawKeyS();
-        gameDisplay.drawKeyD();
-        gameDisplay.drawEllipse(this);
+        game.drawScoreValue(this);
+        game.drawKeyA();
+        game.drawKeyS();
+        game.drawKeyD();
+        game.drawTarget(this);
         System.out.println();
     }
 

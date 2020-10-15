@@ -1,12 +1,13 @@
 package org.academiadecodigo.bootcamp.game;
 
+import org.academiadecodigo.bootcamp.Ball.BallFactory;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class GameDisplay {
+public class Game {
 
     private Text textScore;
     private Text scoreValue;
@@ -17,8 +18,26 @@ public class GameDisplay {
     private Rectangle keyS;
     private Rectangle keyD;
     private Rectangle keyW;
+    private BallFactory ballFactory;
+    private int initialSpeed;
+    private int initialBallScore;
+    private boolean hasBalls;
 
-    public GameDisplay() {
+    public Game() {
+        initialSpeed = 1;
+        initialBallScore = 1;
+        ballFactory = new BallFactory(initialSpeed, initialBallScore, 4);
+    }
+
+    public void startBalls() {
+        //while(!hasBalls) {
+            try {
+                Thread.sleep(2000);
+                ballFactory.makeBall();
+                Thread.sleep(2000);
+                ballFactory.makeBall();
+            } catch (Exception ex) {
+            }
 
     }
 
@@ -30,8 +49,8 @@ public class GameDisplay {
     }
 
     public void drawScoreValue(GameLayout gameLayout) {
-        scoreValue = new Text(400, 300, score);
-        scoreValue.grow(150, 40);
+        scoreValue = new Text(gameLayout.getWidth()/2 - gameLayout.getxMargin(), 140, score);
+        scoreValue.grow(15, 30);
         scoreValue.setColor(Color.WHITE);
         scoreValue.draw();
     }
@@ -41,7 +60,7 @@ public class GameDisplay {
         System.out.println();
     }
 
-    public void drawEllipse(GameLayout gameLayout) {
+    public void drawTarget(GameLayout gameLayout) {
         target = new Ellipse(gameLayout.getWidth()/2, gameLayout.getHeight()/2, 50, 50);
         target.setColor(Color.WHITE);
         target.draw();

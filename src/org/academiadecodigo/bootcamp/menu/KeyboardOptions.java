@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.menu;
 
 import jdk.swing.interop.SwingInterOpUtils;
+import org.academiadecodigo.bootcamp.game.Game;
 import org.academiadecodigo.bootcamp.game.GameLayout;
 import org.academiadecodigo.bootcamp.resources.Sound;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -15,6 +16,7 @@ public class KeyboardOptions implements KeyboardHandler {
 
     private Keyboard keyboard;
     private GameLayout gameLayout;
+    private Game game;
     private MenuOption selectedMenuOption;
     private boolean menuLocked;
     private String gamePage;
@@ -154,10 +156,12 @@ public class KeyboardOptions implements KeyboardHandler {
 
                     } else if (selectedMenuOption == MenuOption.START) {
 
-                        /*gameLayout.closeMenu();
-                        gameLayout.drawGame();
                         menuLocked = true;
-                        gamePage = "Start";*/
+                        gameLayout.closeMenu();
+                        gameLayout.drawGame();
+                        game = new Game();
+                        game.startBalls();
+                        //gamePage = "Start";
 
                     }
 
