@@ -160,7 +160,7 @@ public class KeyboardOptions implements KeyboardHandler {
                         gameLayout.closeMenu();
                         gameLayout.drawGame();
                         game = new Game();
-                        game.startBalls();
+                        //game.startBalls();
                         //gamePage = "Start";
 
                     }

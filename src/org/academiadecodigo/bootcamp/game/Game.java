@@ -21,7 +21,7 @@ public class Game {
     private BallFactory ballFactory;
     private int initialSpeed;
     private int initialBallScore;
-    private boolean hasBalls;
+    private boolean ballPassedLimit;
 
     public Game() {
         initialSpeed = 1;
@@ -29,17 +29,24 @@ public class Game {
         ballFactory = new BallFactory(initialSpeed, initialBallScore, 4);
     }
 
-    public void startBalls() {
-        //while(!hasBalls) {
+    /*public void startBalls() {
+        /*while(!hasBalls) {
             try {
-                Thread.sleep(2000);
-                ballFactory.makeBall();
-                Thread.sleep(2000);
+                Thread.sleep(1000);
                 ballFactory.makeBall();
             } catch (Exception ex) {
             }
+        ballFactory.makeBall();
 
-    }
+        while(!ballPassedLimit) {
+            for(int i = 0; i < ballFactory.getBalls().length; i++) {
+                ballFactory.getBalls()[i].moveBall();
+                if(ballFactory.getBalls()[i].getBall().getX() > target.getX() + target.getWidth()/2) {
+                    ballPassedLimit = true;
+                }
+            }
+        }
+    }*/
 
     public void drawTextScore(GameLayout gameLayout) {
         textScore = new Text(gameLayout.getWidth()/2 - gameLayout.getxMargin(), 80, "Score");

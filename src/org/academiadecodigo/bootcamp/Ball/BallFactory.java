@@ -34,6 +34,10 @@ public class BallFactory {
 
     }
 
+    public Ball[] getBalls() {
+        return balls;
+    }
+
     public void makeBall(){
         balls[ballCounter] = new Ball(randomColorBall() ,0, 350, 48, 48, speed, ballScore);
         if(ballCounter < ballNumber - 1){

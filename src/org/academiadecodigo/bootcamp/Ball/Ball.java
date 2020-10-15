@@ -17,7 +17,7 @@ public class Ball {
 
     }
 
-    public void moveBall(double x){
+    public void moveBall(){
         ball.translate(speed ,0);
 
     }
