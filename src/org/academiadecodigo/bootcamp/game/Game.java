@@ -66,7 +66,9 @@ public class Game {
 
             new Thread(new Runnable() {
                 public void run() {
+
                     try {
+
                         while (true) {
                             for (int i = 0; i <= ballFactory.getBalls().length - 1; i++) {
 
@@ -76,12 +78,14 @@ public class Game {
 
                             Thread.sleep(400);
                         }
+
                     } catch (InterruptedException ie) {
 
                         System.err.println(ie.getMessage());
 
                     }
                 }
+
             }).start();
 
 
