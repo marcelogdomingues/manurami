@@ -32,18 +32,6 @@ public class Game {
 
     public void startBalls() {
 
-      /*  while (!ballPassedLimit) {
-            try {
-                //Thread.sleep(1000);
-                ballFactory.makeBall();
-            } catch (Exception ex) {
-
-                System.out.println(ex.getMessage());
-
-            }*/
-
-        // ballFactory.makeBall();
-//
         while (!ballPassedLimit) {
 
             for (int i = 0; i < ballFactory.getBalls().length; i++) {

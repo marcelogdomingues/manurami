@@ -21,8 +21,7 @@ public class BallFactory {
 
     public Color randomColorBall(){
 
-        ///Ver o que e que se passa com o BallColor.values().length
-        BallColor color = BallColor.values()[(int) Math.random() * 6];
+        BallColor color = BallColor.values()[(int) (Math.random()*6)];
 
         return switch (color) {
             case GREEN -> Color.GREEN;
@@ -50,10 +49,5 @@ public class BallFactory {
 
 
     }
-
-
-
-
-
 
 }
