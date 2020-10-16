@@ -7,6 +7,10 @@ public class Ball {
     private Ellipse ball;
     private double speed;
     private int ballScore;
+    private double x;
+    private double y;
+    private double width;
+    private double height;
 
     public Ball(Color color, double x, double y, double width, double height, double speed, int ballScore) {
         this.ballScore = ballScore;
@@ -14,6 +18,14 @@ public class Ball {
         ball = new Ellipse( x, y, width, height);
         ball.setColor(color);
         ball.fill();
+
+    }
+
+    public void ballPosition(double x, double y, double width, double height){
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
 
     }
 
@@ -31,5 +43,27 @@ public class Ball {
         return ball;
     }
 
+    public int getBallScore() {
+        return ballScore;
+    }
 
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
 }

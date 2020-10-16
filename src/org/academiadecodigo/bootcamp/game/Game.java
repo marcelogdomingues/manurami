@@ -1,14 +1,14 @@
 package org.academiadecodigo.bootcamp.game;
-
+import org.academiadecodigo.bootcamp.Ball.Ball;
 import org.academiadecodigo.bootcamp.Ball.BallFactory;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Ellipse;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.simplegraphics.graphics.*;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
+    private Ball ball;
+    private Ellipse ellipse;
+    private double delete;
     private Text textScore;
     private Text scoreValue;
     private String score = "0";
@@ -50,6 +50,7 @@ public class Game {
 
         }
 
+
         try {
 
             new Thread(new Runnable() {
@@ -82,10 +83,16 @@ public class Game {
             System.err.println(e.getMessage());
 
         }
-
-
     }
     //}
+        /*
+        public void delete() {
+            delete = ball.getY();
+            if (delete >= game) {
+                Canvas.getInstance().hide((Shape) this);
+            }
+        }
+         */
 
     public void drawTextScore(GameLayout gameLayout) {
         textScore = new Text(gameLayout.getWidth() / 2 - gameLayout.getxMargin(), 80, "Score");
