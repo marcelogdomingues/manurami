@@ -8,6 +8,7 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -20,6 +21,7 @@ public class KeyboardOptions implements KeyboardHandler {
     private MenuOption selectedMenuOption;
     private boolean menuLocked;
     private String gamePage;
+    private Picture menuLoading;
 
     public void menuOptions(GameLayout gameLayout) {
 
@@ -158,6 +160,14 @@ public class KeyboardOptions implements KeyboardHandler {
 
                         menuLocked = true;
                         gameLayout.closeMenu();
+                        /*menuLoading = new Picture(450,450, "resources/img/loading.jpg");
+                        menuLoading.draw();
+                        try {
+                            Thread.sleep(600);
+                        } catch (InterruptedException ie){
+                            System.out.println("Error");
+                        }
+                        menuLoading.delete();*/
                         gameLayout.drawGame();
                         game = new Game();
                         game.startBalls();

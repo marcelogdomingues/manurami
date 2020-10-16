@@ -91,7 +91,8 @@ public class GameLayout {
     }
 
     public void drawInstructions(){
-        instructions = new Text(width/2 - xMargin, height/2 - yMargin, "Instructions...");
+        instructions = new Text(width/2 - xMargin, 100, "Instructions: ");
+        //Please pay careful attention to the balls and their respective colours. If a ball reaches the target (you know, the cute white circle in the middle of the screen, be prepared to click on the combination keys ASD to add to your score! \n I hope you have a ball!
         instructions.grow(20, 8);
         instructions.setColor(Color.WHITE);
         instructions.draw();
@@ -102,7 +103,7 @@ public class GameLayout {
     }
 
     public void drawCredits(){
-        credits = new Text(width/2 - xMargin, height/2 - yMargin, "Credits...");
+        credits = new Text(width/2 - xMargin, height/2 - yMargin, "Credits: ");
         credits.grow(20, 8);
         credits.setColor(Color.WHITE);
         credits.draw();
