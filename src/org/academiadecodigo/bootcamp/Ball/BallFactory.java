@@ -16,7 +16,7 @@ public class BallFactory {
         balls = new Ball[ballNumber];
         this.ballScore = ballScore;
         this.speed = speed;
-
+        this.ballNumber = ballNumber;
     }
 
     public Color randomColorBall(){

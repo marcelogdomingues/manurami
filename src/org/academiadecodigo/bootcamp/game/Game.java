@@ -22,6 +22,7 @@ public class Game {
     private int initialSpeed;
     private int initialBallScore;
     private boolean ballPassedLimit;
+    private boolean hasBalls;
 
     public Game() {
         initialSpeed = 1;
@@ -29,34 +30,80 @@ public class Game {
         ballFactory = new BallFactory(initialSpeed, initialBallScore, 4);
     }
 
-    /*public void startBalls() {
-        /*while(!hasBalls) {
+    public void startBalls() {
+
+      /*  while (!ballPassedLimit) {
             try {
-                Thread.sleep(1000);
+                //Thread.sleep(1000);
                 ballFactory.makeBall();
             } catch (Exception ex) {
-            }
-        ballFactory.makeBall();
 
-        while(!ballPassedLimit) {
-            for(int i = 0; i < ballFactory.getBalls().length; i++) {
-                ballFactory.getBalls()[i].moveBall();
-                if(ballFactory.getBalls()[i].getBall().getX() > target.getX() + target.getWidth()/2) {
-                    ballPassedLimit = true;
+                System.out.println(ex.getMessage());
+
+            }*/
+
+        // ballFactory.makeBall();
+//
+        while (!ballPassedLimit) {
+
+            for (int i = 0; i < ballFactory.getBalls().length; i++) {
+
+                ballFactory.makeBall();
+
+                for (int j = 0; j <= i; j++) {
+
+                    ballFactory.getBalls()[j].newBallMovement();
+
                 }
+
             }
+
+            ballPassedLimit = true;
+
         }
-    }*/
+
+        try {
+
+            new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        while (true) {
+                            for (int i = 0; i <= ballFactory.getBalls().length - 1; i++) {
+
+                                ballFactory.getBalls()[i].moveBall();
+
+                            }
+
+                            Thread.sleep(400);
+                        }
+                    } catch (InterruptedException ie) {
+
+                        System.err.println(ie.getMessage());
+
+                    }
+                }
+            }).start();
+
+
+        } catch (Exception e) {
+
+            System.err.println(e.getMessage());
+
+        }
+
+
+    }
+    //}
 
     public void drawTextScore(GameLayout gameLayout) {
-        textScore = new Text(gameLayout.getWidth()/2 - gameLayout.getxMargin(), 80, "Score");
+        textScore = new Text(gameLayout.getWidth() / 2 - gameLayout.getxMargin(), 80, "Score");
         textScore.grow(60, 30);
         textScore.setColor(Color.WHITE);
         textScore.draw();
     }
 
     public void drawScoreValue(GameLayout gameLayout) {
-        scoreValue = new Text(gameLayout.getWidth()/2 - gameLayout.getxMargin(), 140, score);
+        scoreValue = new Text(gameLayout.getWidth() / 2 - gameLayout.getxMargin(), 140, score);
         scoreValue.grow(15, 30);
         scoreValue.setColor(Color.WHITE);
         scoreValue.draw();
@@ -68,7 +115,7 @@ public class Game {
     }
 
     public void drawTarget(GameLayout gameLayout) {
-        target = new Ellipse(gameLayout.getWidth()/2, gameLayout.getHeight()/2, 50, 50);
+        target = new Ellipse(gameLayout.getWidth() / 2, gameLayout.getHeight() / 2, 50, 50);
         target.setColor(Color.WHITE);
         target.draw();
     }
@@ -92,7 +139,7 @@ public class Game {
     }
 
     public void drawKeyD() {
-        keyD = new Rectangle(645, 600, 40,40);
+        keyD = new Rectangle(645, 600, 40, 40);
         keyD.setColor(Color.YELLOW);
         keyD.fill();
     }

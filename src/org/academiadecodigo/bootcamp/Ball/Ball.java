@@ -18,7 +18,12 @@ public class Ball {
     }
 
     public void moveBall(){
-        ball.translate(speed ,0);
+        ball.translate(10 ,0);
+
+    }
+
+    public void newBallMovement(){
+        ball.translate(85 ,0);
 
     }
 
