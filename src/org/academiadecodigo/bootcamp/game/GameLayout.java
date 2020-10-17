@@ -18,9 +18,7 @@ public class GameLayout {
     private Picture credits;
     private Picture loadingScreen;
     private Ellipse target;
-    private Rectangle keyA;
-    private Rectangle keyS;
-    private Rectangle keyD;
+    private Picture supportKeys;
     private Text textScore;
     private Text scoreValue;
 
@@ -82,19 +80,14 @@ public class GameLayout {
 
     public void drawGame(int score) {
         drawTextScore(this);
-        //gameDisplay.drawSupportKeys();
+        drawSupportKeys();
         drawScoreValue(this, score);
-        drawKeyA();
-        drawKeyS();
-        drawKeyD();
         drawTarget(this);
     }
 
     public void closeGame(){
         target.delete();
-        keyA.delete();
-        keyD.delete();
-        keyS.delete();
+        supportKeys.delete();
         textScore.delete();
         scoreValue.delete();
     }
@@ -105,28 +98,9 @@ public class GameLayout {
         target.draw();
     }
 
-    /*public void drawSupportKeys() {
-        supportKeys = new Picture(300, 300, "resources/img/ASD.png");
-        supportKeys.grow(120, 40);
+    public void drawSupportKeys() {
+        supportKeys = new Picture(500, 600, "resources/img/asd.png");
         supportKeys.draw();
-    }*/
-
-    public void drawKeyA() {
-        keyA = new Rectangle(555, 600, 40, 40);
-        keyA.setColor(Color.CYAN);
-        keyA.fill();
-    }
-
-    public void drawKeyS() {
-        keyS = new Rectangle(600, 600, 40, 40);
-        keyS.setColor(Color.MAGENTA);
-        keyS.fill();
-    }
-
-    public void drawKeyD() {
-        keyD = new Rectangle(645, 600, 40, 40);
-        keyD.setColor(Color.YELLOW);
-        keyD.fill();
     }
 
     public void drawTextScore(GameLayout gameLayout) {
@@ -142,14 +116,6 @@ public class GameLayout {
         scoreValue.setColor(Color.WHITE);
         scoreValue.draw();
     }
-
-
-
-
-
-
-
-
 
     public void drawInstructions(){
 
