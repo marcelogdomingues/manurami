@@ -1,4 +1,5 @@
 package org.academiadecodigo.bootcamp.game;
+
 import org.academiadecodigo.bootcamp.Ball.Ball;
 import org.academiadecodigo.bootcamp.Ball.BallFactory;
 import org.academiadecodigo.simplegraphics.graphics.*;
@@ -6,12 +7,14 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
+    public boolean gameOn = true;
+
     private Ball ball;
     private Ellipse ellipse;
     private double delete;
     private Text textScore;
     private Text scoreValue;
-    private String score = "0";
+    private static int score = 0;
     private Ellipse target;
     private Picture supportKeys;
     private Rectangle keyA;
@@ -23,33 +26,16 @@ public class Game {
     private int initialBallScore;
     private boolean ballPassedLimit;
     private boolean hasBalls;
+    private Boolean KeyPressed;
 
     public Game() {
         initialSpeed = 1;
         initialBallScore = 1;
-        ballFactory = new BallFactory(initialSpeed, initialBallScore, 4);
+        ballFactory = new BallFactory(initialSpeed, initialBallScore, 7);
+        this.gameOn = true;
     }
 
     public void startBalls() {
-
-        while (!ballPassedLimit) {
-
-            for (int i = 0; i < ballFactory.getBalls().length; i++) {
-
-                ballFactory.makeBall();
-
-                for (int j = 0; j <= i; j++) {
-
-                    ballFactory.getBalls()[j].newBallMovement();
-
-                }
-
-            }
-
-            ballPassedLimit = true;
-
-        }
-
 
         try {
 
@@ -58,14 +44,49 @@ public class Game {
 
                     try {
 
-                        while (true) {
-                            for (int i = 0; i <= ballFactory.getBalls().length - 1; i++) {
+                        gameOn = true;
 
-                                ballFactory.getBalls()[i].moveBall();
+                        //if vidas < 3 false
+
+                        while (!ballPassedLimit) {
+
+                            for (int i = 0; i < ballFactory.getBalls().length; i++) {
+
+                                ballFactory.makeBall();
+
+                                for (int j = 0; j <= i; j++) {
+
+                                    ballFactory.getBalls()[j].newBallMovement();
+
+                                }
 
                             }
 
-                            Thread.sleep(400);
+                            ballPassedLimit = true;
+
+                        }
+
+                        while (gameOn) {
+                            for (int i = 0; i <= ballFactory.getBalls().length - 1; i++) {
+
+
+                                if (ballFactory.getBalls()[i].getBall().getX() + 10 < 700 - 48) {
+
+                                    ballFactory.getBalls()[i].moveBall();
+
+                                    //Apaga as Bolas no Final e Da Respawn
+
+                                } else {
+
+                                    ballFactory.getBalls()[i].getBall().delete();
+                                    ballFactory.makeBall();
+
+                                }
+
+                            }
+
+                            Thread.sleep(300);
+
                         }
 
                     } catch (InterruptedException ie) {
@@ -94,6 +115,49 @@ public class Game {
         }
          */
 
+    public void aPressed() {
+
+        for (int i = 0; i <= ballFactory.getBalls().length - 1; i++) {
+
+            if (ballFactory.getBalls()[i].getBall().getColor() == Color.CYAN && ballFactory.getBalls()[i].getBall().getX() == (700 / 2) - 5) {
+
+                deleteCyanBall(ballFactory.getBalls()[i]);
+
+            }
+
+        }
+
+    }
+
+    public void sPressed() {
+
+        for (int i = 0; i <= ballFactory.getBalls().length - 1; i++) {
+
+            if (ballFactory.getBalls()[i].getBall().getColor() == Color.MAGENTA && ballFactory.getBalls()[i].getBall().getX() == (700 / 2) - 5) {
+
+                deleteMangetaBall(ballFactory.getBalls()[i]);
+
+            }
+
+        }
+
+    }
+
+    public void dPressed() {
+
+        for (int i = 0; i <= ballFactory.getBalls().length - 1; i++) {
+
+
+            if (ballFactory.getBalls()[i].getBall().getColor() == Color.YELLOW && ballFactory.getBalls()[i].getBall().getX() == (700 / 2) - 5) {
+
+                deleteYellowBall(ballFactory.getBalls()[i]);
+
+            }
+
+        }
+
+    }
+
     public void drawTextScore(GameLayout gameLayout) {
         textScore = new Text(gameLayout.getWidth() / 2 - gameLayout.getxMargin(), 80, "Score");
         textScore.grow(60, 30);
@@ -102,15 +166,14 @@ public class Game {
     }
 
     public void drawScoreValue(GameLayout gameLayout) {
-        scoreValue = new Text(gameLayout.getWidth() / 2 - gameLayout.getxMargin(), 140, score);
+        scoreValue = new Text(gameLayout.getWidth() / 2 - gameLayout.getxMargin(), 140, Integer.toString(score));
         scoreValue.grow(15, 30);
         scoreValue.setColor(Color.WHITE);
         scoreValue.draw();
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
-        System.out.println();
     }
 
     public void drawTarget(GameLayout gameLayout) {
@@ -143,7 +206,40 @@ public class Game {
         keyD.fill();
     }
 
-    public void drawDisplay() {
-        setScore("10");
+    public void deleteMangetaBall(Ball ball) {
+
+        ball.removeBall();
+
     }
+
+    public void deleteCyanBall(Ball ball) {
+
+        ball.removeBall();
+
+    }
+
+    public void deleteYellowBall(Ball ball) {
+
+
+        ball.removeBall();
+
+    }
+
+    public Boolean deleteYBall(Boolean KeyPressed) {
+        return KeyPressed;
+    }
+
+    public void drawDisplay() {
+        setScore(0);
+    }
+
+    public boolean isGameOn() {
+        return gameOn;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+
 }

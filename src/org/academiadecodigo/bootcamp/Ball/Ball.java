@@ -4,6 +4,7 @@ import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 
 public class Ball {
 
+    private Color color;
     private Ellipse ball;
     private double speed;
     private int ballScore;
@@ -15,6 +16,7 @@ public class Ball {
     public Ball(Color color, double x, double y, double width, double height, double speed, int ballScore) {
         this.ballScore = ballScore;
         this.speed = speed;
+        this.color = color;
         ball = new Ellipse( x, y, width, height);
         ball.setColor(color);
         ball.fill();
@@ -39,9 +41,18 @@ public class Ball {
 
     }
 
+    public void removeBall(){
+        ball.delete();
+    }
+
     public Ellipse getBall() {
         return ball;
     }
+
+    public Color getColor() {
+        return color;
+    }
+
 
     public int getBallScore() {
         return ballScore;
@@ -66,4 +77,5 @@ public class Ball {
     public double getSpeed() {
         return speed;
     }
+
 }

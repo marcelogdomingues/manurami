@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.menu;
 
 import jdk.swing.interop.SwingInterOpUtils;
+import org.academiadecodigo.bootcamp.Ball.Ball;
 import org.academiadecodigo.bootcamp.game.Game;
 import org.academiadecodigo.bootcamp.game.GameLayout;
 import org.academiadecodigo.bootcamp.resources.Sound;
@@ -22,6 +23,7 @@ public class KeyboardOptions implements KeyboardHandler {
     private boolean menuLocked;
     private String gamePage;
     private Picture menuLoading;
+    private static boolean  gameOn = false;
 
     public void menuOptions(GameLayout gameLayout) {
 
@@ -109,7 +111,13 @@ public class KeyboardOptions implements KeyboardHandler {
                 break;
 
             case (KeyboardEvent.KEY_A):
-                //nada no menu
+
+                if(game.isGameOn()){
+
+                    game.aPressed();
+
+                }
+
                 break;
 
             case (KeyboardEvent.KEY_S):
@@ -126,12 +134,25 @@ public class KeyboardOptions implements KeyboardHandler {
                         selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() + 1];
 
                     }
+
+                }
+
+                if(game.isGameOn()){
+
+                    game.sPressed();
+
                 }
 
                 break;
 
             case (KeyboardEvent.KEY_D):
-                //nada no menu
+
+                if(game.isGameOn()){
+
+                    game.dPressed();
+
+                }
+
                 break;
 
 
@@ -171,6 +192,7 @@ public class KeyboardOptions implements KeyboardHandler {
                         gameLayout.drawGame();
                         game = new Game();
                         game.startBalls();
+                        gameOn = true;
                         gamePage = "Start";
 
                     }
@@ -188,6 +210,7 @@ public class KeyboardOptions implements KeyboardHandler {
                 if(gamePage == "Start"){
 
                     gameLayout.closeGame();
+                    gameOn = false;
                     gameLayout.drawMenu();
 
                 }else if( gamePage == "Credits"){

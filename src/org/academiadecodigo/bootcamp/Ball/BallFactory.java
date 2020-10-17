@@ -4,6 +4,7 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public class BallFactory {
 
+    private Color color;
     private Ball[] balls;
     private int ballNumber;
     private double speed;
@@ -40,14 +41,12 @@ public class BallFactory {
 
     public void makeBall(){
         balls[ballCounter] = new Ball(randomColorBall() ,0, 350, 48, 48, speed, ballScore);
+        this.color = randomColorBall();
         if(ballCounter < ballNumber - 1){
             ballCounter++;
         }else{
             ballCounter = 0;
         }
 
-
-
     }
-
 }
