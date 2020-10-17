@@ -1,10 +1,7 @@
 package org.academiadecodigo.bootcamp.game;
 
 import org.academiadecodigo.bootcamp.menu.MenuOption;
-import org.academiadecodigo.simplegraphics.graphics.Canvas;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.simplegraphics.graphics.*;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class GameLayout {
@@ -20,6 +17,12 @@ public class GameLayout {
     private Picture instructions;
     private Picture credits;
     private Picture loadingScreen;
+    private Ellipse target;
+    private Rectangle keyA;
+    private Rectangle keyS;
+    private Rectangle keyD;
+    private Text textScore;
+    private Text scoreValue;
 
     public GameLayout(int width, int height, int xMargin, int yMargin, Color backgroundColor) {
         this.width = width;
@@ -77,20 +80,76 @@ public class GameLayout {
         }
     }
 
-    public void drawGame() {
-        Game game = new Game();
-        game.drawTextScore(this);
+    public void drawGame(int score) {
+        drawTextScore(this);
         //gameDisplay.drawSupportKeys();
-        game.drawScoreValue(this);
-        game.drawKeyA();
-        game.drawKeyS();
-        game.drawKeyD();
-        game.drawTarget(this);
+        drawScoreValue(this, score);
+        drawKeyA();
+        drawKeyS();
+        drawKeyD();
+        drawTarget(this);
     }
 
     public void closeGame(){
-
+        target.delete();
+        keyA.delete();
+        keyD.delete();
+        keyS.delete();
+        textScore.delete();
+        scoreValue.delete();
     }
+
+    public void drawTarget(GameLayout gameLayout) {
+        target = new Ellipse(gameLayout.getWidth() / 2, gameLayout.getHeight() / 2, 50, 50);
+        target.setColor(Color.WHITE);
+        target.draw();
+    }
+
+    /*public void drawSupportKeys() {
+        supportKeys = new Picture(300, 300, "resources/img/ASD.png");
+        supportKeys.grow(120, 40);
+        supportKeys.draw();
+    }*/
+
+    public void drawKeyA() {
+        keyA = new Rectangle(555, 600, 40, 40);
+        keyA.setColor(Color.CYAN);
+        keyA.fill();
+    }
+
+    public void drawKeyS() {
+        keyS = new Rectangle(600, 600, 40, 40);
+        keyS.setColor(Color.MAGENTA);
+        keyS.fill();
+    }
+
+    public void drawKeyD() {
+        keyD = new Rectangle(645, 600, 40, 40);
+        keyD.setColor(Color.YELLOW);
+        keyD.fill();
+    }
+
+    public void drawTextScore(GameLayout gameLayout) {
+        textScore = new Text(gameLayout.getWidth() / 2 - gameLayout.getxMargin(), 80, "Score");
+        textScore.grow(60, 30);
+        textScore.setColor(Color.WHITE);
+        textScore.draw();
+    }
+
+    public void drawScoreValue(GameLayout gameLayout, int score) {
+        scoreValue = new Text(gameLayout.getWidth() / 2 - gameLayout.getxMargin(), 140, Integer.toString(score));
+        scoreValue.grow(15, 30);
+        scoreValue.setColor(Color.WHITE);
+        scoreValue.draw();
+    }
+
+
+
+
+
+
+
+
 
     public void drawInstructions(){
 

@@ -181,8 +181,8 @@ public class KeyboardOptions implements KeyboardHandler {
 
                         menuLocked = true;
                         gameLayout.closeMenu();
-                        gameLayout.drawGame();
                         game = new Game();
+                        gameLayout.drawGame(game.getScore());
                         game.startBalls();
                         gameOn = true;
                         gamePage = "Start";
