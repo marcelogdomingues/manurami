@@ -1,0 +1,128 @@
+Index: src/org/academiadecodigo/bootcamp/game/GameLayout.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.academiadecodigo.bootcamp.game;\n\nimport org.academiadecodigo.bootcamp.menu.MenuOption;\nimport org.academiadecodigo.simplegraphics.graphics.Rectangle;\nimport org.academiadecodigo.simplegraphics.graphics.Color;\nimport org.academiadecodigo.simplegraphics.graphics.Text;\n\npublic class GameLayout {\n\n    private int width;\n    private int height;\n    private int xMargin;\n    private int yMargin;\n    private Color backgroundColor;\n    private Rectangle marker;\n    private Text title;\n    private Text[] menuOptions = new Text[MenuOption.values().length];\n    private Text instructions;\n    private Text credits;\n\n    public GameLayout(int width, int height, int xMargin, int yMargin, Color backgroundColor) {\n        this.width = width;\n        this.height = height;\n        this.xMargin = xMargin;\n        this.yMargin = yMargin;\n        this.backgroundColor = backgroundColor;\n    }\n\n    public Rectangle getMarker() {\n        return marker;\n    }\n\n    public void drawBackground(){\n        Rectangle rectangle = new Rectangle(xMargin, yMargin, width, height);\n        rectangle.setColor(backgroundColor);\n        rectangle.fill();\n    }\n\n    public void drawTitle(){\n        title = new Text(width/2 - xMargin, 100, \"MANURAMI\");\n        title.grow(100, 40);\n        title.setColor(Color.WHITE);\n        title.draw();\n    }\n\n    public void drawMenuOptions(MenuOption optionName){\n        int indexMenuOption = MenuOption.valueOf(optionName.toString()).ordinal();\n        int spacing = indexMenuOption * 50;\n        menuOptions[indexMenuOption] = new Text(350, 200 + spacing, optionName.toString());\n        menuOptions[indexMenuOption].setColor(Color.WHITE);\n        menuOptions[indexMenuOption].grow(20, 8);\n        menuOptions[indexMenuOption].draw();\n    }\n\n    public void drawMarker(){\n        marker = new Rectangle(300, 205, 10, 10);\n        marker.setColor(Color.WHITE);\n        marker.fill();\n    }\n\n    public void drawMenu(){\n        drawTitle();\n        for(MenuOption menuOption : MenuOption.values()){\n            drawMenuOptions(menuOption);\n        }\n        drawMarker();\n    }\n\n    public void closeMenu(){\n        title.delete();\n        marker.delete();\n        for(Text menuOption : menuOptions){\n            menuOption.delete();\n        }\n    }\n\n    public void drawGame() {\n        Game game = new Game();\n        game.drawTextScore(this);\n        //gameDisplay.drawSupportKeys();\n        game.drawScoreValue(this);\n        game.drawKeyA();\n        game.drawKeyS();\n        game.drawKeyD();\n        game.drawTarget(this);\n        System.out.println();\n    }\n\n    public void closeGame(){\n\n    }\n\n    public void drawInstructions(){\n        instructions = new Text(width/2 - xMargin, 100, \"Instructions: \");\n        //Please pay careful attention to the balls and their respective colours. If a ball reaches the target (you know, the cute white circle in the middle of the screen, be prepared to click on the combination keys ASD to add to your score! \\n I hope you have a ball!\n        instructions.grow(20, 8);\n        instructions.setColor(Color.WHITE);\n        instructions.draw();\n    }\n\n    public void closeInstructions(){\n        instructions.delete();\n    }\n\n    public void drawCredits(){\n        credits = new Text(width/2 - xMargin, height/2 - yMargin, \"Credits: \");\n        credits.grow(20, 8);\n        credits.setColor(Color.WHITE);\n        credits.draw();\n    }\n\n    public void closeCredits(){\n        credits.delete();\n    }\n\n    public int getHeight() {\n        return height;\n    }\n\n    public int getxMargin() {\n        return xMargin;\n    }\n\n    public int getWidth() {\n        return width;\n    }\n\n    public int getyMargin() {\n        return yMargin;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/org/academiadecodigo/bootcamp/game/GameLayout.java	(revision 14258ff5154f2e45bf94e09ca54e8e1776b32de9)
++++ src/org/academiadecodigo/bootcamp/game/GameLayout.java	(date 1602951984521)
+@@ -1,9 +1,11 @@
+ package org.academiadecodigo.bootcamp.game;
+ 
+ import org.academiadecodigo.bootcamp.menu.MenuOption;
++import org.academiadecodigo.simplegraphics.graphics.Canvas;
+ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+ import org.academiadecodigo.simplegraphics.graphics.Color;
+ import org.academiadecodigo.simplegraphics.graphics.Text;
++import org.academiadecodigo.simplegraphics.pictures.Picture;
+ 
+ public class GameLayout {
+ 
+@@ -15,8 +17,9 @@
+     private Rectangle marker;
+     private Text title;
+     private Text[] menuOptions = new Text[MenuOption.values().length];
+-    private Text instructions;
+-    private Text credits;
++    private Picture instructions;
++    private Picture credits;
++    private Picture loadingScreen;
+ 
+     public GameLayout(int width, int height, int xMargin, int yMargin, Color backgroundColor) {
+         this.width = width;
+@@ -83,7 +86,6 @@
+         game.drawKeyS();
+         game.drawKeyD();
+         game.drawTarget(this);
+-        System.out.println();
+     }
+ 
+     public void closeGame(){
+@@ -91,21 +93,24 @@
+     }
+ 
+     public void drawInstructions(){
+-        instructions = new Text(width/2 - xMargin, 100, "Instructions: ");
+-        //Please pay careful attention to the balls and their respective colours. If a ball reaches the target (you know, the cute white circle in the middle of the screen, be prepared to click on the combination keys ASD to add to your score! \n I hope you have a ball!
+-        instructions.grow(20, 8);
+-        instructions.setColor(Color.WHITE);
++
++        Picture instructions = new Picture(10,10, "resources/img/instructions.png");
++        //instructions = new Text(width/2 - xMargin, 100, "Instructions:");
++        //instructions.grow(20, 8);
++        //instructions.setColor(Color.WHITE);
+         instructions.draw();
+     }
+ 
+     public void closeInstructions(){
+-        instructions.delete();
++        Canvas.getInstance().hide(this.instructions);
++        //instructions.delete();
+     }
+ 
+     public void drawCredits(){
+-        credits = new Text(width/2 - xMargin, height/2 - yMargin, "Credits: ");
+-        credits.grow(20, 8);
+-        credits.setColor(Color.WHITE);
++        //credits = new Text(width/2 - xMargin, height/2 - yMargin, "Credits: ");
++        //credits.grow(20, 8);
++        //credits.setColor(Color.WHITE);
++        Picture credits = new Picture(10, 10, "resources/img/credits.png");
+         credits.draw();
+     }
+ 
+@@ -113,6 +118,21 @@
+         credits.delete();
+     }
+ 
++    public void drawLoadingScreen() {
++        Picture loadingScreen = new Picture(10, 10, "resources/img/loading.png");
++        loadingScreen.draw();
++        try {
++            Thread.sleep(300);
++        } catch (InterruptedException ie) {
++            System.err.println(ie.getMessage());
++        }
++        loadingScreen.delete();
++    }
++
++    /*public void closeLoadingScreen(){
++        loadingScreen.delete();
++    }*/
++
+     public int getHeight() {
+         return height;
+     }
+Index: src/org/academiadecodigo/bootcamp/menu/KeyboardOptions.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.academiadecodigo.bootcamp.menu;\n\nimport jdk.swing.interop.SwingInterOpUtils;\nimport org.academiadecodigo.bootcamp.Ball.Ball;\nimport org.academiadecodigo.bootcamp.game.Game;\nimport org.academiadecodigo.bootcamp.game.GameLayout;\nimport org.academiadecodigo.bootcamp.resources.Sound;\nimport org.academiadecodigo.simplegraphics.keyboard.Keyboard;\nimport org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;\nimport org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;\nimport org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;\nimport org.academiadecodigo.simplegraphics.pictures.Picture;\n\nimport java.awt.event.KeyEvent;\nimport java.io.File;\n\npublic class KeyboardOptions implements KeyboardHandler {\n\n    private Keyboard keyboard;\n    private GameLayout gameLayout;\n    private Game game;\n    private MenuOption selectedMenuOption;\n    private boolean menuLocked;\n    private String gamePage;\n    private Picture menuLoading;\n    private static boolean  gameOn = false;\n\n    public void menuOptions(GameLayout gameLayout) {\n\n        this.gameLayout = gameLayout;\n\n        selectedMenuOption = MenuOption.values()[0];\n\n        {\n            keyboard = new Keyboard(this);\n            KeyboardEvent wPressed = new KeyboardEvent();\n            wPressed.setKey(KeyboardEvent.KEY_W);\n            wPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);\n            keyboard.addEventListener(wPressed);\n        } //Listening to W key\n\n        {\n            keyboard = new Keyboard(this);\n            KeyboardEvent aPressed = new KeyboardEvent();\n            aPressed.setKey(KeyboardEvent.KEY_A);\n            aPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);\n            keyboard.addEventListener(aPressed);\n        } //Listening to A key\n\n        {\n            keyboard = new Keyboard(this);\n            KeyboardEvent sPressed = new KeyboardEvent();\n            sPressed.setKey(KeyboardEvent.KEY_S);\n            sPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);\n            keyboard.addEventListener(sPressed);\n        } //Listening to S key\n\n        {\n            keyboard = new Keyboard(this);\n            KeyboardEvent dPressed = new KeyboardEvent();\n            dPressed.setKey(KeyboardEvent.KEY_D);\n            dPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);\n            keyboard.addEventListener(dPressed);\n        } //Listening to D key\n\n\n        {\n            keyboard = new Keyboard(this);\n            KeyboardEvent enterPressed = new KeyboardEvent();\n            enterPressed.setKey(KeyEvent.VK_ENTER);\n            enterPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);\n            keyboard.addEventListener(enterPressed);\n        } //Listening to ENTER key\n\n        {\n            keyboard = new Keyboard(this);\n            KeyboardEvent escapePressed = new KeyboardEvent();\n            escapePressed.setKey(KeyEvent.VK_ESCAPE);\n            escapePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);\n            keyboard.addEventListener(escapePressed);\n        } //Listening to ESCAPE key\n\n\n    }\n\n    @Override\n    public void keyPressed(KeyboardEvent keyboardEvent) {\n\n        Sound menuSound = new Sound();\n        File soundFile = new File(\"resources/sounds/btn_sound_menu.wav\");\n        menuSound.playSound(soundFile);\n\n        switch (keyboardEvent.getKey()) {\n\n            case (KeyboardEvent.KEY_W):\n\n                if (!menuLocked) {\n\n                    if (selectedMenuOption == MenuOption.values()[0]) {\n                        gameLayout.getMarker().translate(0, 50 * (MenuOption.values().length - 1));\n                        selectedMenuOption = MenuOption.values()[MenuOption.values().length - 1];\n\n                    } else {\n\n                        gameLayout.getMarker().translate(0, -50);\n                        selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() - 1];\n\n                    }\n                }\n\n                break;\n\n            case (KeyboardEvent.KEY_A):\n\n                if(game.isGameOn()){\n\n                    game.aPressed();\n\n                }\n\n                break;\n\n            case (KeyboardEvent.KEY_S):\n\n                if (!menuLocked) {\n\n                    if (selectedMenuOption == MenuOption.values()[MenuOption.values().length - 1]) {\n                        gameLayout.getMarker().translate(0, -50 * (MenuOption.values().length - 1));\n                        selectedMenuOption = MenuOption.values()[0];\n\n                    } else {\n\n                        gameLayout.getMarker().translate(0, 50);\n                        selectedMenuOption = MenuOption.values()[MenuOption.valueOf(selectedMenuOption.toString()).ordinal() + 1];\n\n                    }\n\n                }\n\n                if(game.isGameOn()){\n\n                    game.sPressed();\n\n                }\n\n                break;\n\n            case (KeyboardEvent.KEY_D):\n\n                if(game.isGameOn()){\n\n                    game.dPressed();\n\n                }\n\n                break;\n\n\n            case (KeyEvent.VK_ENTER):\n\n                if (!menuLocked) {\n\n                    if (selectedMenuOption == MenuOption.EXIT) {\n\n                        System.exit(0);\n\n                    } else if (selectedMenuOption == MenuOption.CREDITS) {\n\n                        gameLayout.closeMenu();\n                        gameLayout.drawCredits();\n                        menuLocked = true;\n                        gamePage = \"Credits\";\n\n                    } else if (selectedMenuOption == MenuOption.INSTRUCTIONS) {\n                        gameLayout.closeMenu();\n                        gameLayout.drawInstructions();\n                        menuLocked = true;\n                        gamePage = \"Instructions\";\n\n                    } else if (selectedMenuOption == MenuOption.START) {\n\n                        menuLocked = true;\n                        gameLayout.closeMenu();\n                        /*menuLoading = new Picture(450,450, \"resources/img/loading.jpg\");\n                        menuLoading.draw();\n                        try {\n                            Thread.sleep(600);\n                        } catch (InterruptedException ie){\n                            System.out.println(\"Error\");\n                        }\n                        menuLoading.delete();*/\n                        gameLayout.drawGame();\n                        game = new Game();\n                        game.startBalls();\n                        gameOn = true;\n                        gamePage = \"Start\";\n\n                    }\n\n                    selectedMenuOption = MenuOption.values()[0];\n\n                }\n\n                break;\n\n            case (KeyEvent.VK_ESCAPE):\n\n                menuLocked= false;\n\n                if(gamePage == \"Start\"){\n\n                    gameLayout.closeGame();\n                    gameOn = false;\n                    gameLayout.drawMenu();\n\n                }else if( gamePage == \"Credits\"){\n\n                    gameLayout.closeCredits();\n                    gameLayout.drawMenu();\n\n                }else if( gamePage == \"Instructions\"){\n\n                    gameLayout.closeInstructions();\n                    gameLayout.drawMenu();\n\n                }\n                break;\n\n                /*gameLayout.closeMenu();\n                gameLayout.getMarker().translate(0, 50 * (MenuOption.valueOf(selectedMenuOption.toString()).ordinal()));\n                menuLocked = false;*/\n\n        }\n\n    }\n\n    @Override\n    public void keyReleased(KeyboardEvent keyboardEvent) {\n    }\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/org/academiadecodigo/bootcamp/menu/KeyboardOptions.java	(revision 14258ff5154f2e45bf94e09ca54e8e1776b32de9)
++++ src/org/academiadecodigo/bootcamp/menu/KeyboardOptions.java	(date 1602951849554)
+@@ -173,6 +173,7 @@
+ 
+                     } else if (selectedMenuOption == MenuOption.INSTRUCTIONS) {
+                         gameLayout.closeMenu();
++                        gameLayout.drawLoadingScreen();
+                         gameLayout.drawInstructions();
+                         menuLocked = true;
+                         gamePage = "Instructions";
+@@ -181,14 +182,6 @@
+ 
+                         menuLocked = true;
+                         gameLayout.closeMenu();
+-                        /*menuLoading = new Picture(450,450, "resources/img/loading.jpg");
+-                        menuLoading.draw();
+-                        try {
+-                            Thread.sleep(600);
+-                        } catch (InterruptedException ie){
+-                            System.out.println("Error");
+-                        }
+-                        menuLoading.delete();*/
+                         gameLayout.drawGame();
+                         game = new Game();
+                         game.startBalls();

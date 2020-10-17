@@ -22,7 +22,6 @@ public class KeyboardOptions implements KeyboardHandler {
     private MenuOption selectedMenuOption;
     private boolean menuLocked;
     private String gamePage;
-    private Picture menuLoading;
     private static boolean  gameOn = false;
 
     public void menuOptions(GameLayout gameLayout) {
