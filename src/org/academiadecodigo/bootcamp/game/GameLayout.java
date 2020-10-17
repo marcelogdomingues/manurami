@@ -1,9 +1,11 @@
 package org.academiadecodigo.bootcamp.game;
 
 import org.academiadecodigo.bootcamp.menu.MenuOption;
+import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class GameLayout {
 
@@ -15,8 +17,9 @@ public class GameLayout {
     private Rectangle marker;
     private Text title;
     private Text[] menuOptions = new Text[MenuOption.values().length];
-    private Text instructions;
-    private Text credits;
+    private Picture instructions;
+    private Picture credits;
+    private Picture loadingScreen;
 
     public GameLayout(int width, int height, int xMargin, int yMargin, Color backgroundColor) {
         this.width = width;
@@ -83,7 +86,6 @@ public class GameLayout {
         game.drawKeyS();
         game.drawKeyD();
         game.drawTarget(this);
-        System.out.println();
     }
 
     public void closeGame(){
@@ -91,27 +93,45 @@ public class GameLayout {
     }
 
     public void drawInstructions(){
-        instructions = new Text(width/2 - xMargin, 100, "Instructions: ");
-        //Please pay careful attention to the balls and their respective colours. If a ball reaches the target (you know, the cute white circle in the middle of the screen, be prepared to click on the combination keys ASD to add to your score! \n I hope you have a ball!
-        instructions.grow(20, 8);
-        instructions.setColor(Color.WHITE);
+
+        Picture instructions = new Picture(10,10, "resources/img/instructions.png");
+        //instructions = new Text(width/2 - xMargin, 100, "Instructions:");
+        //instructions.grow(20, 8);
+        //instructions.setColor(Color.WHITE);
         instructions.draw();
     }
 
     public void closeInstructions(){
-        instructions.delete();
+        Canvas.getInstance().hide(this.instructions);
+        //instructions.delete();
     }
 
     public void drawCredits(){
-        credits = new Text(width/2 - xMargin, height/2 - yMargin, "Credits: ");
-        credits.grow(20, 8);
-        credits.setColor(Color.WHITE);
+        //credits = new Text(width/2 - xMargin, height/2 - yMargin, "Credits: ");
+        //credits.grow(20, 8);
+        //credits.setColor(Color.WHITE);
+        Picture credits = new Picture(10, 10, "resources/img/credits.png");
         credits.draw();
     }
 
     public void closeCredits(){
         credits.delete();
     }
+
+    public void drawLoadingScreen() {
+        Picture loadingScreen = new Picture(10, 10, "resources/img/loading.png");
+        loadingScreen.draw();
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException ie) {
+            System.err.println(ie.getMessage());
+        }
+        loadingScreen.delete();
+    }
+
+    /*public void closeLoadingScreen(){
+        loadingScreen.delete();
+    }*/
 
     public int getHeight() {
         return height;

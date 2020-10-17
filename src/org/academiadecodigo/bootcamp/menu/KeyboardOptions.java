@@ -173,6 +173,7 @@ public class KeyboardOptions implements KeyboardHandler {
 
                     } else if (selectedMenuOption == MenuOption.INSTRUCTIONS) {
                         gameLayout.closeMenu();
+                        gameLayout.drawLoadingScreen();
                         gameLayout.drawInstructions();
                         menuLocked = true;
                         gamePage = "Instructions";
@@ -181,14 +182,6 @@ public class KeyboardOptions implements KeyboardHandler {
 
                         menuLocked = true;
                         gameLayout.closeMenu();
-                        /*menuLoading = new Picture(450,450, "resources/img/loading.jpg");
-                        menuLoading.draw();
-                        try {
-                            Thread.sleep(600);
-                        } catch (InterruptedException ie){
-                            System.out.println("Error");
-                        }
-                        menuLoading.delete();*/
                         gameLayout.drawGame();
                         game = new Game();
                         game.startBalls();
