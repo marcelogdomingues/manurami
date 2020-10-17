@@ -39,14 +39,14 @@ public class BallFactory {
         return balls;
     }
 
-    public void makeBall(){
+    public Ball makeBall(){
         balls[ballCounter] = new Ball(randomColorBall() ,0, 350, 48, 48, speed, ballScore);
-        this.color = randomColorBall();
         if(ballCounter < ballNumber - 1){
             ballCounter++;
         }else{
             ballCounter = 0;
         }
+        return balls[ballCounter];
 
     }
 }

@@ -2,7 +2,7 @@ package org.academiadecodigo.bootcamp.Ball;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 
-public class Ball {
+public class Ball{
 
     private Color color;
     private Ellipse ball;
@@ -77,5 +77,4 @@ public class Ball {
     public double getSpeed() {
         return speed;
     }
-
 }

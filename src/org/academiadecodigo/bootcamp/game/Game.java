@@ -5,28 +5,15 @@ import org.academiadecodigo.bootcamp.Ball.BallFactory;
 import org.academiadecodigo.simplegraphics.graphics.*;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Game {
+public class Game implements Runnable{
 
     public boolean gameOn = true;
 
-    private Ball ball;
-    private Ellipse ellipse;
-    private double delete;
-    private Text textScore;
-    private Text scoreValue;
     private static int score = 0;
-    private Ellipse target;
-    private Picture supportKeys;
-    private Rectangle keyA;
-    private Rectangle keyS;
-    private Rectangle keyD;
-    private Rectangle keyW;
     private BallFactory ballFactory;
     private int initialSpeed;
     private int initialBallScore;
     private boolean ballPassedLimit;
-    private boolean hasBalls;
-    private Boolean KeyPressed;
 
     public Game() {
         initialSpeed = 1;
@@ -35,7 +22,42 @@ public class Game {
         this.gameOn = true;
     }
 
-    public void startBalls() {
+    public int getScore() {
+        return score;
+    }
+
+    public boolean isGameOn() {
+        return gameOn;
+    }
+
+    public void setGameOn(boolean gameOn) {
+        this.gameOn = gameOn;
+    }
+
+    public void beginGame(){
+        ballFactory.makeBall();
+        Thread makeBallThread = new Thread(this);
+        makeBallThread.start();
+
+    }
+
+    @Override
+    public void run() {
+        while(true){
+            for(Ball ball : ballFactory.getBalls()){
+                if(ball != null){
+                    if(ball.getBall().getX() < 400){
+                        ball.moveBall();
+                    }else{
+                        ball.getBall().delete();
+                    }
+                }
+            }
+            try { Thread.sleep(10); } catch (InterruptedException ex) {}
+        }
+    }
+
+        /* public void startBalls() {
 
         try {
 
@@ -105,6 +127,7 @@ public class Game {
 
         }
     }
+     */
     //}
         /*
         public void delete() {
@@ -115,6 +138,7 @@ public class Game {
         }
          */
 
+    /*
     public void aPressed() {
 
         for (int i = 0; i <= ballFactory.getBalls().length - 1; i++) {
@@ -189,14 +213,6 @@ public class Game {
     public void drawDisplay() {
         setScore(0);
     }
-
-    public boolean isGameOn() {
-        return gameOn;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
+    */
 
 }

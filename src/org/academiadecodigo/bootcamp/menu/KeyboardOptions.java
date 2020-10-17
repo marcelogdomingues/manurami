@@ -113,7 +113,7 @@ public class KeyboardOptions implements KeyboardHandler {
 
                 if(game.isGameOn()){
 
-                    game.aPressed();
+                    //game.aPressed();
 
                 }
 
@@ -138,7 +138,7 @@ public class KeyboardOptions implements KeyboardHandler {
 
                 if(game.isGameOn()){
 
-                    game.sPressed();
+                    //game.sPressed();
 
                 }
 
@@ -148,7 +148,7 @@ public class KeyboardOptions implements KeyboardHandler {
 
                 if(game.isGameOn()){
 
-                    game.dPressed();
+                    //game.dPressed();
 
                 }
 
@@ -183,8 +183,8 @@ public class KeyboardOptions implements KeyboardHandler {
                         gameLayout.closeMenu();
                         game = new Game();
                         gameLayout.drawGame(game.getScore());
-                        game.startBalls();
-                        gameOn = true;
+                        game.beginGame();
+                        // gameOn = true;
                         gamePage = "Start";
 
                     }
