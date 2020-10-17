@@ -11,8 +11,8 @@ public class BallMover implements Runnable{
 
     public BallMover(BallFactory ballFactory) {
         this.ballFactory = ballFactory;
+        activated = true;
     }
-
     @Override
     public void run() {
         while (activated) {
