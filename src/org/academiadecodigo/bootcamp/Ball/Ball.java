@@ -32,7 +32,7 @@ public class Ball{
     }
 
     public void moveBall(){
-        ball.translate(10 ,0);
+        ball.translate(5 ,0);
 
     }
 
