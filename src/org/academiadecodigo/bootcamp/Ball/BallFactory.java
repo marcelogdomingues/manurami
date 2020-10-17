@@ -29,9 +29,9 @@ public class BallFactory implements Runnable {
         BallColor color = BallColor.values()[(int) (Math.random()*6)];
 
         return switch (color) {
-            case GREEN -> Color.GREEN;
+            /*case GREEN -> Color.GREEN;
             case BLUE -> Color.BLUE;
-            case RED -> Color.RED;
+            case RED -> Color.RED;*/
             case CYAN -> Color.CYAN;
             case MAGENTA -> Color.MAGENTA;
             case YELLOW -> Color.YELLOW;

@@ -16,7 +16,6 @@ public class GameLayout {
     private Text[] menuOptions = new Text[MenuOption.values().length];
     private Picture instructions;
     private Picture credits;
-    private Picture loadingScreen;
     private Ellipse target;
     private Picture supportKeys;
     private Text textScore;
@@ -32,6 +31,10 @@ public class GameLayout {
 
     public Rectangle getMarker() {
         return marker;
+    }
+
+    public Ellipse getTarget() {
+        return target;
     }
 
     public void drawBackground(){

@@ -22,7 +22,6 @@ public class KeyboardOptions implements KeyboardHandler {
     private MenuOption selectedMenuOption;
     private boolean menuLocked;
     private String gamePage;
-    private static boolean  gameOn = false;
 
     public void menuOptions(GameLayout gameLayout) {
 
@@ -111,7 +110,11 @@ public class KeyboardOptions implements KeyboardHandler {
 
             case (KeyboardEvent.KEY_A):
 
-                if(game.isGameOn()){
+                if(game != null){
+                    if(game.isGameOn()) {
+                        game.buttonPress("A");
+                    }
+
 
                     //game.aPressed();
 
@@ -136,7 +139,10 @@ public class KeyboardOptions implements KeyboardHandler {
 
                 }
 
-                if(game.isGameOn()){
+                if(game != null){
+                    if(game.isGameOn()) {
+                        game.buttonPress("S");
+                    }
 
                     //game.sPressed();
 
@@ -146,7 +152,10 @@ public class KeyboardOptions implements KeyboardHandler {
 
             case (KeyboardEvent.KEY_D):
 
-                if(game.isGameOn()){
+                if(game != null){
+                    if(game.isGameOn()) {
+                        game.buttonPress("D");
+                    }
 
                     //game.dPressed();
 
@@ -181,7 +190,7 @@ public class KeyboardOptions implements KeyboardHandler {
 
                         menuLocked = true;
                         gameLayout.closeMenu();
-                        game = new Game();
+                        game = new Game(gameLayout);
                         gameLayout.drawGame(game.getScore());
                         game.beginGame();
                         // gameOn = true;
@@ -203,7 +212,7 @@ public class KeyboardOptions implements KeyboardHandler {
 
                     gameLayout.closeGame();
                     game.stopGame();
-                    // gameOn = false;
+                    game.setGameOn(false);
                     gameLayout.drawMenu();
 
                 }else if( gamePage == "Credits"){

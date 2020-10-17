@@ -1,9 +1,9 @@
 package org.academiadecodigo.bootcamp.Ball;
 
 public enum BallColor {
-    RED,
+    /*RED,
     GREEN,
-    BLUE,
+    BLUE,*/
     CYAN,
     MAGENTA,
     YELLOW,

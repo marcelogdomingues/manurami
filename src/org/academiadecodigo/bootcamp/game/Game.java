@@ -8,18 +8,18 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game{
 
-    public boolean gameOn = true;
-
+    private boolean gameOn = true;
     private static int score = 0;
     private BallFactory ballFactory;
     private BallMover ballMover;
     private int initialSpeed;
     private int initialBallScore;
-    private boolean ballPassedLimit;
     private Thread ballCreationThread;
     private Thread ballMovingThread;
+    private GameLayout gameLayout;
 
-    public Game() {
+    public Game(GameLayout gameLayout) {
+        this.gameLayout = gameLayout;
         initialSpeed = 1;
         initialBallScore = 1;
         this.gameOn = true;
@@ -57,6 +57,29 @@ public class Game{
             }
         }
     }
+
+    public void buttonPress(String button) {
+
+        for(Ball ball : ballFactory.getBalls()) {
+            if(ball.getBall().getX() >= gameLayout.getTarget().getX() - gameLayout.getTarget().getWidth()/2 && ball.getBall().getX() <= gameLayout.getTarget().getX() + gameLayout.getTarget().getWidth()/2) {
+                if((ball.getBall().getColor() == Color.CYAN) && (button == "A")) {
+                    score++;
+                } else if((ball.getBall().getColor() == Color.MAGENTA) && (button == "S")) {
+                    score++;
+                } else if((ball.getBall().getColor() == Color.YELLOW) && (button == "D")) {
+                    score++;
+                } else {
+                    gameLayout.closeGame();
+                    stopGame();
+                    setGameOn(false);
+                    gameLayout.drawMenu();
+                }
+            }
+        }
+
+    }
+
+
 
         /* public void startBalls() {
 
