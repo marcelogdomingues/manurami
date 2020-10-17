@@ -15,7 +15,7 @@ public class BallMover implements Runnable{
 
     @Override
     public void run() {
-        while (true) {
+        while (activated) {
             for (Ball ball : ballFactory.getBalls()) {
                 if (ball != null) {
                     if (ball.getBall().getX() < 400) {

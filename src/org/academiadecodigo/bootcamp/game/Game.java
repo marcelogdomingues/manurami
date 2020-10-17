@@ -22,7 +22,6 @@ public class Game{
     public Game() {
         initialSpeed = 1;
         initialBallScore = 1;
-        ballFactory = new BallFactory(initialSpeed, initialBallScore, 7);
         this.gameOn = true;
     }
 
@@ -39,9 +38,12 @@ public class Game{
     }
 
     public void beginGame(){
+        ballFactory = new BallFactory(initialSpeed, initialBallScore, 7);
         ballMover = new BallMover(ballFactory);
+
         ballCreationThread = new Thread(ballFactory);
         ballMovingThread = new Thread(ballMover);
+
         ballCreationThread.start();
         ballMovingThread.start();
     }

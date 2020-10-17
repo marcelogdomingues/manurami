@@ -203,7 +203,7 @@ public class KeyboardOptions implements KeyboardHandler {
 
                     gameLayout.closeGame();
                     game.stopGame();
-                    gameOn = false;
+                    // gameOn = false;
                     gameLayout.drawMenu();
 
                 }else if( gamePage == "Credits"){
