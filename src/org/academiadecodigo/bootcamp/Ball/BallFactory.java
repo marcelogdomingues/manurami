@@ -2,7 +2,7 @@ package org.academiadecodigo.bootcamp.Ball;
 import org.academiadecodigo.bootcamp.game.GameLayout;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 
-public class BallFactory {
+public class BallFactory implements Runnable {
 
     private Color color;
     private Ball[] balls;
@@ -48,5 +48,15 @@ public class BallFactory {
         }
         return balls[ballCounter];
 
+    }
+
+    @Override
+    public void run() {
+        while(true) {
+            makeBall();
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException ex) {}
+        }
     }
 }

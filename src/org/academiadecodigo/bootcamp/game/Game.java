@@ -2,10 +2,11 @@ package org.academiadecodigo.bootcamp.game;
 
 import org.academiadecodigo.bootcamp.Ball.Ball;
 import org.academiadecodigo.bootcamp.Ball.BallFactory;
+import org.academiadecodigo.bootcamp.Ball.BallMover;
 import org.academiadecodigo.simplegraphics.graphics.*;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Game implements Runnable{
+public class Game{
 
     public boolean gameOn = true;
 
@@ -35,26 +36,10 @@ public class Game implements Runnable{
     }
 
     public void beginGame(){
-        ballFactory.makeBall();
-        Thread makeBallThread = new Thread(this);
-        makeBallThread.start();
-
-    }
-
-    @Override
-    public void run() {
-        while(true){
-            for(Ball ball : ballFactory.getBalls()){
-                if(ball != null){
-                    if(ball.getBall().getX() < 400){
-                        ball.moveBall();
-                    }else{
-                        ball.getBall().delete();
-                    }
-                }
-            }
-            try { Thread.sleep(10); } catch (InterruptedException ex) {}
-        }
+        Thread ballCreationThread = new Thread(ballFactory);
+        Thread ballMovingThread = new Thread(new BallMover(ballFactory));
+        ballCreationThread.start();
+        ballMovingThread.start();
     }
 
         /* public void startBalls() {
