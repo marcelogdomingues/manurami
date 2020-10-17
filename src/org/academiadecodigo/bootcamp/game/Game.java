@@ -12,9 +12,12 @@ public class Game{
 
     private static int score = 0;
     private BallFactory ballFactory;
+    private BallMover ballMover;
     private int initialSpeed;
     private int initialBallScore;
     private boolean ballPassedLimit;
+    private Thread ballCreationThread;
+    private Thread ballMovingThread;
 
     public Game() {
         initialSpeed = 1;
@@ -36,10 +39,21 @@ public class Game{
     }
 
     public void beginGame(){
-        Thread ballCreationThread = new Thread(ballFactory);
-        Thread ballMovingThread = new Thread(new BallMover(ballFactory));
+        ballMover = new BallMover(ballFactory);
+        ballCreationThread = new Thread(ballFactory);
+        ballMovingThread = new Thread(ballMover);
         ballCreationThread.start();
         ballMovingThread.start();
+    }
+
+    public void stopGame(){
+        ballFactory.setActivated(false);
+        ballMover.setActivated(false);
+        for (Ball ball : ballFactory.getBalls()) {
+            if (ball != null) {
+                ball.getBall().delete();
+            }
+        }
     }
 
         /* public void startBalls() {

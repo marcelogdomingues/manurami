@@ -202,6 +202,7 @@ public class KeyboardOptions implements KeyboardHandler {
                 if(gamePage == "Start"){
 
                     gameLayout.closeGame();
+                    game.stopGame();
                     gameOn = false;
                     gameLayout.drawMenu();
 

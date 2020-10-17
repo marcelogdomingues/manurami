@@ -3,6 +3,11 @@ package org.academiadecodigo.bootcamp.Ball;
 public class BallMover implements Runnable{
 
     private BallFactory ballFactory;
+    private boolean activated;
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
 
     public BallMover(BallFactory ballFactory) {
         this.ballFactory = ballFactory;

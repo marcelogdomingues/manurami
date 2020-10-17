@@ -11,9 +11,13 @@ public class BallFactory implements Runnable {
     private int ballScore;
     private int ballCounter;
     private static final double chanceBallColor = 0.7;
+    private boolean activated = true;
 
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
 
-    public BallFactory(double speed, int ballScore,int ballNumber){
+    public BallFactory(double speed, int ballScore, int ballNumber){
         balls = new Ball[ballNumber];
         this.ballScore = ballScore;
         this.speed = speed;
@@ -52,7 +56,7 @@ public class BallFactory implements Runnable {
 
     @Override
     public void run() {
-        while(true) {
+        while(activated) {
             makeBall();
             try {
                 Thread.sleep(1500);
