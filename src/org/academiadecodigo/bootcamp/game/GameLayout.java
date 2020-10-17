@@ -12,12 +12,12 @@ public class GameLayout {
     private int yMargin;
     private Color backgroundColor;
     private Rectangle marker;
-    private Text title;
     private Text[] menuOptions = new Text[MenuOption.values().length];
     private Picture instructions;
     private Picture credits;
     private Ellipse target;
     private Picture supportKeys;
+    private Picture title;
     private Text textScore;
     private Text scoreValue;
 
@@ -44,9 +44,7 @@ public class GameLayout {
     }
 
     public void drawTitle(){
-        title = new Text(width/2 - xMargin, 100, "MANURAMI");
-        title.grow(100, 40);
-        title.setColor(Color.WHITE);
+        title = new Picture(90 + xMargin, 50, "resources/img/manurami.png");
         title.draw();
     }
 
@@ -107,14 +105,14 @@ public class GameLayout {
     }
 
     public void drawTextScore(GameLayout gameLayout) {
-        textScore = new Text(gameLayout.getWidth() / 2 - gameLayout.getxMargin(), 80, "Score");
+        textScore = new Text(380 - gameLayout.getxMargin(), 80, "Score");
         textScore.grow(60, 30);
         textScore.setColor(Color.WHITE);
         textScore.draw();
     }
 
     public void drawScoreValue(GameLayout gameLayout, int score) {
-        scoreValue = new Text(gameLayout.getWidth() / 2 - gameLayout.getxMargin(), 140, Integer.toString(score));
+        scoreValue = new Text(380 - gameLayout.getxMargin(), 140, Integer.toString(score));
         scoreValue.grow(15, 30);
         scoreValue.setColor(Color.WHITE);
         scoreValue.draw();
