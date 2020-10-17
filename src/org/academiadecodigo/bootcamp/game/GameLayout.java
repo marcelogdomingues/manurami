@@ -94,7 +94,7 @@ public class GameLayout {
 
     public void drawInstructions(){
 
-        Picture instructions = new Picture(10,10, "resources/img/instructions.png");
+        instructions = new Picture(10,10, "resources/img/instructions.png");
         //instructions = new Text(width/2 - xMargin, 100, "Instructions:");
         //instructions.grow(20, 8);
         //instructions.setColor(Color.WHITE);
@@ -102,15 +102,14 @@ public class GameLayout {
     }
 
     public void closeInstructions(){
-        Canvas.getInstance().hide(this.instructions);
-        //instructions.delete();
+        instructions.delete();
     }
 
     public void drawCredits(){
         //credits = new Text(width/2 - xMargin, height/2 - yMargin, "Credits: ");
         //credits.grow(20, 8);
         //credits.setColor(Color.WHITE);
-        Picture credits = new Picture(10, 10, "resources/img/credits.png");
+        credits = new Picture(10, 10, "resources/img/credits.png");
         credits.draw();
     }
 
