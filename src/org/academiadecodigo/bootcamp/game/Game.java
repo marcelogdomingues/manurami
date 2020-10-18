@@ -108,15 +108,17 @@ public class Game {
         gameOver = new Picture(130, 130, "resources/img/gameover.png");
         gameOver.draw();
 
+
             //gameLayout.drawMenu();
             KeyboardOptions.menuLocked = false;
 
     }
 
+    public Picture getGameOver() {
+        return gameOver;
+    }
 
-
-
-        /* public void startBalls() {
+    /* public void startBalls() {
 
         try {
 
