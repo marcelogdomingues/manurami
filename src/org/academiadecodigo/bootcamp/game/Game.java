@@ -7,8 +7,11 @@ import org.academiadecodigo.bootcamp.menu.KeyboardOptions;
 import org.academiadecodigo.simplegraphics.graphics.*;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Game{
+import java.util.concurrent.TimeUnit;
 
+public class Game {
+
+    private Picture gameOver;
     private boolean gameOn = true;
     private static int score = 0;
     private BallFactory ballFactory;
@@ -42,7 +45,7 @@ public class Game{
         this.gameOn = gameOn;
     }
 
-    public void beginGame(){
+    public void beginGame() {
         ballFactory = new BallFactory(initialSpeed, initialBallScore, 7);
         ballMover = new BallMover(ballFactory);
 
@@ -53,7 +56,7 @@ public class Game{
         ballMovingThread.start();
     }
 
-    public void stopGame(){
+    public void stopGame() {
         ballFactory.setActivated(false);
         ballMover.setActivated(false);
         for (Ball ball : ballFactory.getBalls()) {
@@ -65,43 +68,50 @@ public class Game{
 
     public void buttonPress(String button) {
 
-        for(Ball ball : ballFactory.getBalls()) {
-            if(ball.getBall().getX() >= gameLayout.getTarget().getX() - gameLayout.getTarget().getWidth()/2 && ball.getBall().getX() <= gameLayout.getTarget().getX() + gameLayout.getTarget().getWidth()/2) {
-                if((ball.getBall().getColor() == Color.CYAN) && (button == "A")) {
+        for (Ball ball : ballFactory.getBalls()) {
+            if (ball.getBall().getX() >= gameLayout.getTarget().getX() - gameLayout.getTarget().getWidth() / 2 && ball.getBall().getX() <= gameLayout.getTarget().getX() + gameLayout.getTarget().getWidth() / 2) {
+                if ((ball.getBall().getColor() == Color.CYAN) && (button == "A")) {
                     score++;
                     gameLayout.getScoreValue().delete();
                     gameLayout.drawScoreValue(gameLayout, score);
-                } else if((ball.getBall().getColor() == Color.MAGENTA) && (button == "S")) {
+                } else if ((ball.getBall().getColor() == Color.MAGENTA) && (button == "S")) {
                     score++;
                     gameLayout.getScoreValue().delete();
                     gameLayout.drawScoreValue(gameLayout, score);
-                } else if((ball.getBall().getColor() == Color.YELLOW) && (button == "D")) {
+                } else if ((ball.getBall().getColor() == Color.YELLOW) && (button == "D")) {
                     score++;
                     gameLayout.getScoreValue().delete();
                     gameLayout.drawScoreValue(gameLayout, score);
                 } else {
                     gameOver();
+                    ball.getBall().delete();
                 }
             }
         }
     }
 
-    public void ballPassedTarget(){
-        for(Ball ball : ballFactory.getBalls()) {
-            if(ball.getBall().getX() > gameLayout.getTarget().getX() + gameLayout.getTarget().getWidth()/2) {
+    public void ballPassedTarget() {
+        for (Ball ball : ballFactory.getBalls()) {
+            if (ball.getBall().getX() > gameLayout.getTarget().getX() + gameLayout.getTarget().getWidth() / 2) {
                 gameOver();
             }
         }
     }
 
-    public void gameOver(){
+    public void gameOver() {
+
+
         gameLayout.closeGame();
         stopGame();
         setGameOn(false);
-        gameLayout.drawMenu();
-        KeyboardOptions.menuLocked = false;
-    }
 
+        gameOver = new Picture(130, 130, "resources/img/gameover.png");
+        gameOver.draw();
+
+            //gameLayout.drawMenu();
+            KeyboardOptions.menuLocked = false;
+
+    }
 
 
 
