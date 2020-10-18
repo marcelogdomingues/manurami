@@ -110,7 +110,8 @@ public class Game {
 
 
             //gameLayout.drawMenu();
-            KeyboardOptions.menuLocked = false;
+            KeyboardOptions.menuLocked = true;
+
 
     }
 
