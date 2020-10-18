@@ -18,6 +18,8 @@ public class GameLayout {
     private Ellipse target;
     private Picture supportKeys;
     private Picture title;
+    private Picture enter;
+    private Picture menuSupportKeys;
     private Text textScore;
     private Text scoreValue;
 
@@ -52,6 +54,11 @@ public class GameLayout {
         title.draw();
     }
 
+    public void drawEnter(){
+        enter = new Picture(280 + xMargin, 580, "resources/img/pressenter.png");
+        enter.draw();
+    }
+
     public void drawMenuOptions(MenuOption optionName){
         int indexMenuOption = MenuOption.valueOf(optionName.toString()).ordinal();
         int spacing = indexMenuOption * 50;
@@ -73,11 +80,15 @@ public class GameLayout {
             drawMenuOptions(menuOption);
         }
         drawMarker();
+        drawEnter();
+        drawMenuSupportKeys();
     }
 
     public void closeMenu(){
         title.delete();
         marker.delete();
+        enter.delete();
+        menuSupportKeys.delete();
         for(Text menuOption : menuOptions){
             menuOption.delete();
         }
@@ -106,6 +117,11 @@ public class GameLayout {
     public void drawSupportKeys() {
         supportKeys = new Picture(500, 600, "resources/img/asd.png");
         supportKeys.draw();
+    }
+
+    public void drawMenuSupportKeys() {
+        menuSupportKeys = new Picture(280 + xMargin, 450, "resources/img/asd.png");
+        menuSupportKeys.draw();
     }
 
     public void drawTextScore(GameLayout gameLayout) {

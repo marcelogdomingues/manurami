@@ -105,7 +105,7 @@ public class Game {
         stopGame();
         setGameOn(false);
 
-        gameOver = new Picture(130, 130, "resources/img/gameover.png");
+        gameOver = new Picture(10, 10, "resources/img/gameover.png");
         gameOver.draw();
 
 
@@ -117,6 +117,10 @@ public class Game {
 
     public Picture getGameOver() {
         return gameOver;
+    }
+
+    public void closeGameOver() {
+        gameOver.delete();
     }
 
     /* public void startBalls() {
