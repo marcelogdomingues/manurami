@@ -214,8 +214,11 @@ public class KeyboardOptions implements KeyboardHandler, Runnable{
                     gameLayout.closeGame();
                     game.stopGame();
                     game.setGameOn(false);
-                    game.getGameOver();
-                    game.closeGameOver();
+
+                    if(game.getGameOver() != null) {
+                        game.closeGameOver();
+                    }
+
                     gameLayout.drawMenu();
 
                 }else if( gamePage == "Credits"){
