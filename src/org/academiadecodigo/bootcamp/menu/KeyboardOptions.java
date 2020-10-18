@@ -14,13 +14,13 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
-public class KeyboardOptions implements KeyboardHandler {
+public class KeyboardOptions implements KeyboardHandler, Runnable{
 
     private Keyboard keyboard;
     private GameLayout gameLayout;
     private Game game;
     private MenuOption selectedMenuOption;
-    private boolean menuLocked;
+    public static boolean menuLocked;
     private String gamePage;
 
     public void menuOptions(GameLayout gameLayout) {
@@ -191,6 +191,7 @@ public class KeyboardOptions implements KeyboardHandler {
                         menuLocked = true;
                         gameLayout.closeMenu();
                         game = new Game(gameLayout);
+                        game.setScore(0);
                         gameLayout.drawGame(game.getScore());
                         game.beginGame();
                         // gameOn = true;
@@ -241,4 +242,10 @@ public class KeyboardOptions implements KeyboardHandler {
     }
 
 
+    @Override
+    public void run() {
+        if(game != null){
+            game.ballPassedTarget();
+        }
+    }
 }

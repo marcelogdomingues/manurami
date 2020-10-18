@@ -18,10 +18,8 @@ public class BallMover implements Runnable{
         while (activated) {
             for (Ball ball : ballFactory.getBalls()) {
                 if (ball != null) {
-                    if (ball.getBall().getX() < 400) {
+                    if (ball.getBall().getX() < 600) {
                         ball.moveBall();
-                    } else {
-                        ball.getBall().delete();
                     }
                 }
             }

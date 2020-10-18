@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp.game;
 import org.academiadecodigo.bootcamp.Ball.Ball;
 import org.academiadecodigo.bootcamp.Ball.BallFactory;
 import org.academiadecodigo.bootcamp.Ball.BallMover;
+import org.academiadecodigo.bootcamp.menu.KeyboardOptions;
 import org.academiadecodigo.simplegraphics.graphics.*;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -27,6 +28,10 @@ public class Game{
 
     public int getScore() {
         return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public boolean isGameOn() {
@@ -64,20 +69,40 @@ public class Game{
             if(ball.getBall().getX() >= gameLayout.getTarget().getX() - gameLayout.getTarget().getWidth()/2 && ball.getBall().getX() <= gameLayout.getTarget().getX() + gameLayout.getTarget().getWidth()/2) {
                 if((ball.getBall().getColor() == Color.CYAN) && (button == "A")) {
                     score++;
+                    gameLayout.getScoreValue().delete();
+                    gameLayout.drawScoreValue(gameLayout, score);
                 } else if((ball.getBall().getColor() == Color.MAGENTA) && (button == "S")) {
                     score++;
+                    gameLayout.getScoreValue().delete();
+                    gameLayout.drawScoreValue(gameLayout, score);
                 } else if((ball.getBall().getColor() == Color.YELLOW) && (button == "D")) {
                     score++;
+                    gameLayout.getScoreValue().delete();
+                    gameLayout.drawScoreValue(gameLayout, score);
                 } else {
-                    gameLayout.closeGame();
-                    stopGame();
-                    setGameOn(false);
-                    gameLayout.drawMenu();
+                    gameOver();
                 }
             }
         }
-
     }
+
+    public void ballPassedTarget(){
+        for(Ball ball : ballFactory.getBalls()) {
+            if(ball.getBall().getX() > gameLayout.getTarget().getX() + gameLayout.getTarget().getWidth()/2) {
+                gameOver();
+            }
+        }
+    }
+
+    public void gameOver(){
+        gameLayout.closeGame();
+        stopGame();
+        setGameOn(false);
+        gameLayout.drawMenu();
+        KeyboardOptions.menuLocked = false;
+    }
+
+
 
 
 

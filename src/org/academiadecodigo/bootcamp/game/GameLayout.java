@@ -29,6 +29,10 @@ public class GameLayout {
         this.backgroundColor = backgroundColor;
     }
 
+    public Text getScoreValue() {
+        return scoreValue;
+    }
+
     public Rectangle getMarker() {
         return marker;
     }
